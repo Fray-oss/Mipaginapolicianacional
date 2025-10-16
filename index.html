@@ -136,69 +136,42 @@
     .carousel button.prev { left: 10px; }
     .carousel button.next { right: 10px; }
 
-    .portada {
+    main {
+      min-height: 100vh;
+      overflow: hidden; 
+    }
+
+    /* ==== animacion entre secciones ==== */
+    main {
       position: relative;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      background: url("img/cundinamarca.png") center/cover no-repeat;
-      width: 100%;
-      display: flex;
-      overflow: hidden;
-      animation: fadeIn 2s ease-out;
+      overflow: hidden; 
+      min-height: 100vh;
     }
 
-    .portada::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: rgba(0,0,0,0.45);
-    }
-
-    .portada .overplay {
-      position: relative;
-      z-index: 1;
-      text-align: center;
-      color: white;
-      animation: slideUp 1.8s ease-out;
-    }
-
-    .portada h1 {
-      font-size: 2.5rem;
-      margin-bottom: 15px;
-      letter-spacing: 1px;
-    }
-
-    .portada p {
-      font-size: 1.2rem;
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @keyframes slideUp {
-      from {
-        opacity: 0;
-        transform: translateY(40px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    section {
+    main section {
       margin: 60px auto;
       padding: 30px 20px;
       max-width: 1100px;
+
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+
+      opacity: 0; 
+      visibility: hidden; 
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease, visibilitu 0.6s;
     }
 
-    section h2 {
+    main section.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      position: relative;
+    }
+
+    main section h2 {
       margin-bottom: 25px;
       color: var(--verde2);
       text-align: center;
@@ -209,9 +182,6 @@
   </style>
 </head>
 <body>
-  <section id="inicio" class="portada">
-    <img src="img/cundinamarca.png" alt="Cundinamarca" class="logo-cundi">
-  </section>
   <header class="navbar">
    <div class="logo-titulo">
     <img src="img/logo.png" alt="policia" class="logo">
@@ -220,11 +190,11 @@
   </header>
 
   <nav>
-    <a href="#quienes" onclick="scrollToSection('quienes')">¿Quiénes somos?</a>
-    <a href="#mapa" onclick="scrollToSection('mapa')">Mapa</a>
-    <a href="#lugares" onclick="scrollToSection('lugares')">Lugares turísticos</a>
-    <a href="#videos" onclick="scrollToSection('videos')">Videos</a>
-    <a href="#contacto" onclick="scrollToSection('contacto')">Contacto</a>
+    <a href="#quienes">¿Quiénes somos?</a>
+    <a href="#mapa">Mapa</a>
+    <a href="#lugares">Lugares turísticos</a>
+    <a href="#videos">Videos</a>
+    <a href="#contacto">Contacto</a>
   </nav>
 
   <main>
@@ -319,10 +289,34 @@
 
     <!-- Mapa -->
     <section id="mapa">
-      <h2>Mapa</h2>
-      <div style="max-width:100%;margin:0 auto">
-        <img src="img/mapa.png" alt="Mapa de la sabana de Bogotá" style="width:100%;height:auto;border-radius:8px box-shadow 0 4px 8px rgba(0,0,0,0.3)">
+      <h2>Mapa Interactivo</h2>
+      <p style="text-align:center;color:var(--verde2);margin-bottom:15px">Haz clic sobre cualquier municipio para ver su información turística</p>
+      <div class="mapa-container" style="text-align:center">
+        <img src="img/mapa.png" alt="Mapa de la sabana de Bogotá" usemap="#image-map" class="mapa-turistico" style="max-width:100%;height:auto;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.15)" id="mapaImagen" width="1458" height="818" />
       </div>
+      
+      <map name="image-map">
+        <area target="" alt="Zipaquirá" title="Zipaquirá" href="javascript:void(0)" coords="741,200,728,206,719,218,701,223,692,237,692,252,692,267,682,280,686,287,690,295,690,304,686,312,683,321,708,323,709,335,721,341,732,348,732,357,749,348,758,338,767,343,776,345,781,334,791,332,795,341,803,350,812,344,817,336,811,323,821,319,833,314,840,308,829,301,820,296,825,283,824,267,840,245,834,228,825,219,817,225,812,236,795,227,776,218,761,209,750,214" shape="poly" onclick="openModal('modalZipaquira')" class="mapa-area">
+        <area target="" alt="Cogua" title="Cogua" href="javascript:void(0)" coords="844,240,847,232,857,229,855,216,864,218,875,219,884,222,887,213,895,215,898,209,901,197,896,191,887,193,882,187,875,184,871,176,861,170,855,162,848,156,838,155,829,164,821,166,815,171,809,176,802,180,789,173,784,164,779,155,770,149,763,151,754,153,744,160,736,161,722,164,722,171,726,180,723,188,726,195,727,204,737,197,745,202,750,210,759,207,771,211,782,219,791,223,802,229,811,231,816,222,825,216,833,220,837,227" shape="poly" onclick="openModal('modalCogua')" class="mapa-area">
+        <area target="" alt="Nemocón" title="Nemocón" href="javascript:void(0)" coords="842,307,850,300,860,295,870,295,877,290,886,286,890,278,896,272,901,262,906,256,900,251,894,246,890,240,895,232,901,224,891,216,883,223,873,218,864,220,857,216,856,227,851,233,842,242,837,250,832,256,827,263,824,272,824,280,825,286,819,294,830,301" shape="poly" onclick="openModal('modalNemocon')" class="mapa-area">
+        <area target="" alt="Gachancipá" title="Gachancipá" href="javascript:void(0)" coords="875,295,883,301,893,303,887,310,896,314,896,327,888,331,884,339,875,347,870,353,858,350,852,341,858,335,855,328,849,323,844,312,844,304,855,296" shape="poly" onclick="openModal('modalGachancipa')" class="mapa-area">
+        <area target="" alt="Tocancipá" title="Tocancipá" href="javascript:void(0)" coords="869,358,864,363,853,367,847,379,837,388,826,385,817,379,811,374,799,371,790,365,785,356,776,350,775,341,780,335,789,336,794,343,797,349,803,354,811,343,819,338,815,328,816,321,824,318,833,317,842,310,844,321,848,327,852,334,860,349,852,344" shape="poly" onclick="openModal('modalTocancipa')" class="mapa-area">
+        <area target="" alt="Sopó" title="Sopó" href="javascript:void(0)" coords="837,394,833,400,832,409,830,420,828,427,828,436,821,442,811,444,802,445,800,454,801,463,791,460,782,460,774,463,768,458,760,458,763,445,769,436,774,424,778,415,779,404,772,396,766,391,757,384,763,376,763,363,772,355,772,346,781,354,787,359,792,368,802,375,812,377,820,383,828,388" shape="poly" onclick="openModal('modalSopo')" class="mapa-area">
+        <area target="" alt="La Calera" title="La Calera" href="javascript:void(0)" coords="766,476,757,480,750,486,750,497,749,507,758,514,758,521,762,529,771,519,781,521,779,529,770,532,764,539,758,548,758,557,762,568,761,575,752,579,755,590,755,600,763,584,771,581,777,572,786,562,785,570,782,579,789,583,797,574,804,566,816,560,816,568,812,577,819,578,825,586,829,596,821,599,816,606,825,609,828,619,835,624,844,626,851,614,856,606,860,597,870,593,880,593,891,595,902,595,909,588,900,582,898,573,898,565,900,552,891,548,884,553,884,543,878,538,869,543,866,552,862,561,856,569,847,564,843,557,839,546,831,537,840,531,831,523,842,519,833,515,828,509,821,508,820,500,816,491,825,491,829,482,819,482,812,478,802,477,797,469,786,464,773,464,761,464" shape="poly" onclick="openModal('modalLaCalera')" class="mapa-area">
+        <area target="" alt="Chía" title="Chía" href="javascript:void(0)" coords="761,390,759,398,750,403,746,410,734,410,724,408,718,402,708,397,700,393,699,402,694,408,696,417,692,428,686,433,694,439,701,446,708,448,718,451,726,450,735,452,744,455,753,456,758,450,762,435,768,430,772,419,775,410,776,398" shape="poly" onclick="openModal('modalChia')" class="mapa-area">
+        <area target="" alt="Cajicá" title="Cajicá" href="javascript:void(0)" coords="706,385,713,380,721,374,730,370,727,362,735,356,748,350,757,343,766,341,766,350,763,359,761,368,757,377,757,388,755,395,749,401,744,407,737,406,727,406,719,401,710,397,701,394" shape="poly" onclick="openModal('modalCajica')" class="mapa-area">
+        <area target="" alt="Tabio" title="Tabio" href="javascript:void(0)" coords="682,322,673,323,668,328,661,336,663,347,663,357,663,367,658,375,652,384,643,390,651,395,660,398,668,402,678,402,686,404,695,401,697,389,704,383,713,376,721,371,724,365,727,353,727,344,717,341,708,334,705,323,694,322" shape="poly" onclick="openModal('modalTabio')" class="mapa-area">
+        <area target="" alt="Tenjo" title="Tenjo" href="javascript:void(0)" coords="650,397,647,403,639,406,630,408,623,415,619,421,614,429,614,439,607,444,601,452,600,459,592,469,584,473,578,479,580,488,587,484,596,480,600,495,610,493,618,497,624,509,629,501,630,487,634,477,639,470,654,460,663,460,669,448,677,442,685,434,691,425,692,416,694,404,685,407,678,402,669,403,660,399" shape="poly" onclick="openModal('modalTenjo')" class="mapa-area">
+        <area target="" alt="Cota" title="Cota" href="javascript:void(0)" coords="688,441,681,444,673,446,668,456,663,466,656,464,646,468,638,474,634,483,629,495,632,505,630,515,637,517,636,524,650,522,660,522,655,510,665,501,668,492,668,484,674,475,682,473,688,479,694,469,692,459,691,448" shape="poly" onclick="openModal('modalCota')" class="mapa-area">
+        <area target="" alt="Funza" title="Funza" href="javascript:void(0)" coords="569,479,563,486,556,495,551,504,558,513,569,519,566,528,573,533,576,542,585,549,597,550,609,550,620,550,619,542,630,541,628,532,636,527,636,519,628,515,619,505,615,496,607,495,596,493,593,483,582,488,576,483" shape="poly" onclick="openModal('modalFunza')" class="mapa-area">
+        <area target="" alt="Mosquera" title="Mosquera" href="javascript:void(0)" coords="559,525,550,530,546,536,542,544,543,555,535,557,525,552,515,544,505,537,501,548,506,558,510,567,510,577,512,592,523,603,532,608,543,601,547,607,553,598,565,598,574,602,581,590,595,583,604,585,613,585,624,577,619,571,613,561,614,553,597,550,588,550,579,546,574,536,566,528" shape="poly" onclick="openModal('modalMosquera')" class="mapa-area">
+        <area target="" alt="Bojacá" title="Bojacá" href="javascript:void(0)" coords="499,538,493,531,486,523,478,519,476,510,468,501,455,501,449,508,445,517,440,524,427,528,418,532,412,535,415,546,419,554,428,554,440,560,449,562,457,563,459,575,460,585,471,589,480,593,491,600,498,608,508,613,520,613,521,604,515,599,512,590,512,581,504,576,509,567,504,555,500,547" shape="poly" onclick="openModal('modalBojaca')" class="mapa-area">
+        <area target="" alt="Zipacón" title="Zipacón" href="javascript:void(0)" coords="461,497,451,492,441,487,434,484,425,477,415,477,410,487,402,490,401,500,405,506,398,518,393,526,383,537,374,541,387,549,400,545,410,535,420,533,436,528,441,521,446,513,452,501" shape="poly" onclick="openModal('modalZipacon')" class="mapa-area">
+        <area target="" alt="Subachoque" title="Subachoque" href="javascript:void(0)" coords="678,276,667,272,656,273,645,276,641,285,636,291,628,292,619,294,615,303,603,307,592,308,592,317,580,313,571,321,567,331,563,341,570,353,569,362,558,365,552,371,562,375,573,376,584,379,596,384,600,394,607,395,609,406,606,414,593,424,600,429,610,426,616,420,625,406,634,406,642,399,645,386,650,379,656,372,659,361,661,348,660,338,665,327,673,321,681,317,682,304,681,294,674,290" shape="poly" onclick="openModal('modalSubachoque')" class="mapa-area">
+        <area target="" alt="El Rosal" title="El Rosal" href="javascript:void(0)" coords="545,376,534,380,529,386,531,395,524,401,518,410,513,420,521,424,525,432,527,441,531,448,539,457,548,457,558,456,567,451,576,443,585,433,594,428,598,420,603,411,607,402,597,394,596,385,587,383,578,381,569,380,558,376" shape="poly" onclick="openModal('modalElRosal')" class="mapa-area">
+        <area target="" alt="Facatativá" title="Facatativá" href="javascript:void(0)" coords="508,420,497,424,490,421,481,417,468,406,454,403,437,410,433,417,424,419,405,416,393,416,391,425,397,430,397,441,405,451,409,460,413,466,426,470,437,477,444,483,455,488,466,493,472,502,478,493,485,490,495,484,495,473,504,478,515,482,524,478,531,465,533,455,529,446,525,435,518,425" shape="poly" onclick="openModal('modalFacatativa')" class="mapa-area">
+        <area target="" alt="Madrid" title="Madrid" href="javascript:void(0)" coords="603,436,592,435,584,444,575,449,563,459,552,460,540,463,533,467,535,474,527,480,520,490,506,483,498,477,495,486,484,494,476,505,478,516,486,522,493,530,503,538,513,539,521,545,527,553,535,553,543,553,543,534,556,526,563,520,554,513,552,505,554,494,563,483,571,474,579,473,589,468,593,459,598,451,602,443" shape="poly" onclick="openModal('modalMadrid')" class="mapa-area">
+      </map>
     </section>
 
     <!-- Lugares -->
@@ -409,10 +403,8 @@
           <p>Miradores, actividades campestres y restaurantes.</p>
         </div>
       </div>
-    </section>
 
-    <!-- (Sabana Occidental placeholder) -->
-    <section id="occidental">
+      <!-- (Sabana Occidental placeholder) -->
       <h2>Comando Especial de Policía Sabana Occidente (COSOC)</h2>
       <div class="municipios" style="margin-top:10px">
         <div class="municipio" onclick="openModal('modalFunza')"><h3>Funza</h3><p>Centro histórico y tradiciones.</p></div>
@@ -425,7 +417,6 @@
         <div class="municipio" onclick="openModal('modalSubachoque')"><h3>Subachoque</h3><p>Descanso y clima frío.</p></div>
       </div>
     </section>
-
     <!-- Videos -->
     <section id="videos">
       <h2>Videos</h2>
@@ -466,7 +457,7 @@
         </div>
         <!-- FIN CARRUSEL -->
         <p>Obra arquitectónica y religiosa construida en el interior de una mina de sal. Itinerarios guiados y recorridos subterráneos.</p>
-        <a class="btn-map" href="https://www.google.com/maps/place/Catedral+de+Sal+Zipaquir%C3%A1" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
+        <a class="btn-map" href="https://maps.app.goo.gl/GVpD1kvjoau252Rs8" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a> 
       </div>
     </div>
   </div>
@@ -480,18 +471,22 @@
 
       <div class="site">
         <h3>🌊 Embalse / Laguna de Neusa</h3>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/b/bc/Embalse_de_Neusa.jpg" alt="Embalse del Neusa">
+        <!--CARRUSEL-->
+        <div class="carousel" aria-roledescription="carouselCogua">
+          <div class="carousel-images">
+            <img src="img/cogua1.png" alt="Embalse de Neusa - imagen 1">
+            <img src="img/cogua2.png" alt="Embalse de Neusa - imagen 1">
+            <img src="img/cogua3.png" alt="Embalse de Neusa - imagen 1">
+          </div>
+          <button class="prev" aria-label="Anterior">&#10094;</button>
+          <button class="next" aria-label="Siguiente">&#10095;</button>
+        </div>
+        <!--FIN CARRUSEL-->
         <p>Reservorio y ecosistema con avifauna; ideal para pesca, navegación recreativa, camping y observación de aves.</p>
-        <a class="btn-map" href="https://www.google.com/maps/place/Embalse+de+Neusa" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
-      </div>
-
-      <div class="site">
-        <h3>⛰ Miradores y senderos</h3>
-        <p>Varios cerros y miradores en los alrededores ofrecen rutas de trekking y excelentes vistas de la sabana.</p>
-        <a class="btn-map" href="https://www.google.com/maps/search/miradores+Cogua" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
+        <a class="btn-map" href="https://maps.app.goo.gl/fLR57F5qoD25HHcW6" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
       </div>
     </div>
-  </div>
+  </div>  
 
   <!-- Nemocón (enriquecido) -->
   <div id="modalNemocon" class="modal">
@@ -505,17 +500,19 @@
         <!-- CARRUSEL -->
          <div class="carousel">
           <div class="carousel-images">
-            <img src="img/nemo1.png" alt="Mina de sal - Nemocón">
-            <img src="img/nemo2.png" alt="Mina de sal - Nemocón">
-            <img src="img/nemo3.png" alt="Mina de sal - Nemocón">
+            <img src="img/nemo1.png" alt="Mina de sal - Nemocón - imagen 1">
+            <img src="img/nemo2.png" alt="Mina de sal - Nemocón - imagen 2">
+            <img src="img/nemo3.png" alt="Mina de sal - Nemocón - imagen 3">
           </div>
           <button class = "prev">&#10094;</button>
           <button class = "next">&#10095;</button>
         </div>
         <!-- FIN CARRUSEL -->
         <p>Recorridos guiados por galerías, espejos de agua subterráneos y exposiciones sobre la minería de sal.</p>
-        <a class="btn-map" href="https://www.google.com/maps/place/Mina+de+Sal+Nemoc%C3%B3n" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
+        <a class="btn-map" href="https://maps.app.goo.gl/fLSp9r81Z38Rf1sZ7" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
       </div>
+    </div>
+  </div>
 
   <!-- Tocancipá (enriquecido) -->
   <div id="modalTocancipa" class="modal">
@@ -525,16 +522,20 @@
       <p>Tocancipá combina ocio, deporte y turismo familiar en la Sabana Norte.</p>
 
       <div class="site">
-        <h3>🏁 Autódromo</h3>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6a/Aut%C3%B3dromo_de_Tocancip%C3%A1.jpg" alt="Autódromo Tocancipá">
-        <p>Pista profesional que acoge competencias automovilísticas y eventos relacionados al deporte motor.</p>
-        <a class="btn-map" href="https://www.google.com/maps/place/Aut%C3%B3dromo+Tocancip%C3%A1" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
-      </div>
-
-      <div class="site">
         <h3>🎡 Parque Jaime Duque (cercano)</h3>
+        <!-- CARRUSEL -->
+        <div class="carousel" aria-roledescription="carouselTocan">
+          <div class="carousel-images">
+            <img src="img/toc1.png" alt="Parque Jaime Duque - imagen 1">
+            <img src="img/toc2.png" alt="Parque Jaime Duque - imagen 1">
+            <img src="img/toc3.png" alt="Parque Jaime Duque - imagen 1">
+          </div>
+          <button class="prev" aria-label="Anterior">&#10094;</button>
+          <button class="next" aria-label="Siguiente">&#10095;</button>
+        </div>
+        <!-- FIN CARRUSEL -->
         <p>Parque temático cercano con atracciones culturales, jardines y espacios para familias (visita recomendada desde Tocancipá).</p>
-        <a class="btn-map" href="https://www.google.com/maps/place/Parque+Jaime+Duque" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
+        <a class="btn-map" href="https://maps.app.goo.gl/uAsUwjnMWnkqc2qJ9" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
       </div>
     </div>
   </div>
@@ -612,20 +613,22 @@
     <div class="modal-content" role="dialog" aria-labelledby="lcaleraTitle">
       <span class="modal-close" onclick="closeModal('modalLaCalera')">&times;</span>
       <h2 id="lcaleraTitle">La Calera</h2>
-      <p>La Calera es conocida por sus miradores y la oferta gastronómica con vistas a Bogotá.</p>
 
       <div class="site">
-        <h3>💧 Represa San Rafael</h3>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Represa_de_San_Rafael.jpg/320px-Represa_de_San_Rafael.jpg" alt="Represa San Rafael">
-        <p>Embalse rodeado de naturaleza, ideal para caminatas y observación de aves.</p>
-        <a class="btn-map" href="https://www.google.com/maps/place/Represa+San+Rafael+La+Calera" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
-      </div>
-
-      <div class="site">
-        <h3>🌄 Miradores</h3>
-        <img src="https://www.colombia.com/turismo/2012/07/13/imgs201271315112.jpg" alt="Miradores La Calera">
-        <p>Miradores panorámicos para disfrutar atardeceres y vistas urbanas hacia Bogotá.</p>
-        <a class="btn-map" href="https://www.google.com/maps/search/miradores+La+Calera" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
+        <h3>Parque Nacional Natural Chingaza</h3>
+        <!-- CARRUSEL -->
+        <div class="carousel" aria-roledescription="carouselLaCalera">
+          <div class="carousel-images">
+            <img src="img/cal1.png" alt="Parque Chingaza - imagen 1">
+            <img src="img/cal2.png" alt="Parque Chingaza - imagen 2">
+            <img src="img/cal3.png" alt="Parque Chingaza - imagen 3">
+          </div>
+          <button class="prev" aria-label="Anterior">&#10094;</button>
+          <button class="next" aria-label="Siguiente">&#10095;</button>
+        </div>
+        <!-- FIN CARRUSEL -->
+       <P>El parque Chingaza, cercno a La Calera, es un ecosistema de páramo con biodiversidad única, ideal para senderismo y avistamiento de fauna.</P>
+       <a class="btn-map" href="https://maps.app.goo.gl/4ttKWQN88HeortDk7" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
       </div>
     </div>
   </div>
@@ -711,26 +714,24 @@
       <p>Chía es un polo gastronómico y cultural de la Sabana, con patrimonio y vida nocturna.</p>
 
       <div class="site">
-        <h3>⛪ Iglesia de la Valvanera</h3>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Iglesia_de_Chia.jpg" alt="Iglesia de Chía">
-        <p>Templo emblemático en lo alto del municipio con vistas y tradición religiosa.</p>
-        <a class="btn-map" href="https://www.google.com/maps/place/Iglesia+de+la+Valvanera+Chia" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
-      </div>
-
-      <div class="site">
-        <h3>🍴 Andrés Carne de Res (experiencia gastronómica)</h3>
-        <p>Restaurante icónico que mezcla gastronomía, arte y música; atractivo turístico y cultural.</p>
-        <a class="btn-map" href="https://www.google.com/maps/place/Andr%C3%A9s+Carne+de+Res+Ch%C3%ADa" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
-      </div>
-
-      <div class="site">
-        <h3>🌉 Puente del Común</h3>
-        <p>Monumento histórico de la región con valor patrimonial.</p>
-        <a class="btn-map" href="https://www.google.com/maps/search/Puente+del+Com%C3%BAn+Chia" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
+        <h3> Cerro La Balvanera </h3>
+        <!-- CARRUSEL -->
+        <div class="carousel" aria-roledescription="carouselChia">
+          <div class="carousel-images">
+            <img src="img/chia1.png" alt="Cerro La Balvanera - imagen 1">
+            <img src="img/chia2.png" alt="Cerro La Balvanera - imagen 2">
+            <img src="img/chia3.png" alt="Cerro La Balvanera - imagen 3">
+          </div>
+          <button class="prev" aria-label="Anterior">&#10094;</button>
+          <button class="next" aria-label="Siguiente">&#10095;</button>
+        </div>
+        <!-- FIN CARRUSEL -->
+        <p>Cerro con valor histórico y cultural, sitio de peregrinación y vistas panorámicas de la sabana.</p>
+        <a class="btn-map" href="https://www.google.com/maps/place/Cerro+La+Balvanera" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
       </div>
     </div>
-  </div>
-
+  </div>    
+    
   <!-- Cota (enriquecido) -->
   <div id="modalCota" class="modal">
     <div class="modal-content" role="dialog" aria-labelledby="cotaTitle">
@@ -772,42 +773,44 @@
         <!-- CARRUSEL -->
         <div class="carousel">
           <div class="carousel-images">
-            <img src="img/faca1.png" alt="Parque Arqueológico Facatativá">
-            <img src="img/faca2.png" alt="Parque Arqueológico Facatativá">
-            <img src="img/faca3.png" alt="Parque Arqueológico Facatativá">
+            <img src="img/faca1.png" alt="Parque Arqueológico Facatativá - imagen 1">
+            <img src="img/faca2.png" alt="Parque Arqueológico Facatativá - imagen 2">
+            <img src="img/faca3.png" alt="Parque Arqueológico Facatativá - imagen 3">
           </div>
-          <button class="prev">&#10094;</button>
-          <button class="next">&#10095;</button>
+          <button class="prev" aria-label="Anterior">&#10094;</button>
+          <button class="next" aria-label="Siguiente">&#10095;</button>
          </div>
          <!-- FIN CARRUSEL -->
          <p>Conjunto de formaciones rocosas con petroglifos y pinturas rupestres que datan de epocas precolombinas. Ideal para senderismo y exploracion cultural</p>
-         <a href="https://maps.app.goo.gl/8JtX4v1F6vU6mY9K8" target="_blank" class="map-btn"> Ver en Google Maps</a>
+         <a href="https://maps.app.goo.gl/fLLZWQpGF6zXQ2Qa8" target="_blank" class="map-btn">📍 Ver en Google Maps</a>
        </div>
      </div>
    </div>
 
  <!-- Modal Mosquera -->
- <div id="modalMosquera" class="modal">
-  <div class="modal-content" role="dialog" aria-labelledby="mosqueraTitle">
-    <span class="modal-close" onclick="closeModal('modalMosquera')">&times;</span>
-    <h2 id="mosqueraTitle">Mosquera</h2>
-    <p>
-
-    <div class="site">
-      <h3>🌿 Humedal Gualí</h3>
-      <img src="https://www.eltiempo.com/files/article_main/files/crop/uploads/2017/07/03/595a9db9c3b02.r_1561410991988.0-0-800-400.jpeg" alt="Humedal Gualí">
-      <p>Espacio natural protegido, hogar de aves migratorias y especies nativas. Ideal para recorridos de educación ambiental y caminatas al aire libre.</p>
-      <a href="https://maps.app.goo.gl/nAX5KcQv9Yjpx63H8" target="_blank" class="map-btn">📍 Ver en Google Maps</a>
-    </div>
-
-    <div class="site">
-      <h3>⛪ Iglesia San Francisco de Asís</h3>
-      <img src="https://www.mosquera-cundinamarca.gov.co/sites/municipio/content/files/000601/30040_iglesia-san-francisco-de-asis.jpg" alt="Iglesia San Francisco de Asís Mosquera">
-      <p>Construcción colonial emblemática del municipio, con gran valor histórico y religioso.</p>
-      <a href="https://maps.app.goo.gl/Y7oev1wLZrbjL3aQ7" target="_blank" class="map-btn">📍 Ver en Google Maps</a>
+  <div id="modalMosquera" class="modal">
+    <div class="modal-content" role="dialog" aria-labelledby="mosqueraTitle">
+     <span class="modal-close" onclick="closeModal('modalMosquera')">&times;</span>
+     <h2 id="mosqueraTitle">Mosquera</h2>
+    
+      <div class="site">
+       <h3> Desierto de Sabrinsky</h3>
+       <!-- CARRUSEL -->
+       <div class="carousel" aria-roledescription="carouselMosquera">
+         <div class="carousel-images">
+           <img src="img/mos1.png" alt="Desierto de Sabrinsky - imagen 1">
+           <img src="img/mos2.png" alt="Desierto de Sabrinsky - imagen 2">
+           <img src="img/mos3.png" alt="Desierto de Sabrinsky - imagen 3">
+         </div>
+         <button class="prev" aria-label="Anterior">&#10094;</button>
+         <button class="next" aria-label="Siguiente">&#10095;</button>
+       </div>
+       <!-- FIN CARRUSEL -->
+       <p>Área natural con formaciones de dunas y paisajes semiáridos, ideal para caminatas y fotografía.</p>
+       <a href="https://maps.app.goo.gl/N9CsS2u5cJNnNp278" target="_blank" class="map-btn">📍 Ver en Google Maps</a>
+      </div>
     </div>
   </div>
- </div>
 
  <!-- Modal Funza -->
  <div id="modalFunza" class="modal">
@@ -833,25 +836,29 @@
 
  <!-- Modal Subachoque -->
  <div id="modalSubachoque" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('modalSubachoque')">&times;</span>
-    <h2 class="modal-title">Subachoque</h2>
-
+  <div class="modal-content" role="dialog" aria-labelledby="subachoqueTitle">
+   <span class="modal-close" onclick="closeModal('modalSubachoque')">&times;</span>
+   <h2 id="subachoqueTitle">Subachoque</h2>
+  
     <div class="site">
-      <h3>🌳 Reserva Forestal Río Blanco</h3>
-      <img src="https://i.ytimg.com/vi/qVvOjk6kKIQ/maxresdefault.jpg" alt="Reserva Río Blanco Subachoque">
-      <p>Área protegida con senderos ecológicos, cascadas y paisajes andinos de gran belleza.</p>
-      <a href="https://maps.app.goo.gl/dXJ9qV9qEzzfT8ca8" target="_blank" class="map-btn">📍 Ver en Google Maps</a>
-    </div>
-
-    <div class="site">
-      <h3>🏘 Parque Principal</h3>
-      <img src="https://www.cundinamarca.gov.co/sites/cundinamarca/content/files/000784/39218_subachoque.jpg" alt="Parque Principal Subachoque">
-      <p>Espacio colonial con arquitectura tradicional, donde se aprecia la cultura del municipio.</p>
-      <a href="https://maps.app.goo.gl/ajRmTQj8DXP9WeLt8" target="_blank" class="map-btn">📍 Ver en Google Maps</a>
+     <h3>Cerro el Tablazo</h3>
+     <!-- CARRUSEL -->
+     <div class="carousel" aria-roledescription="carouselSubachoque">
+       <div class="carousel-images">
+         <img src="img/suba1.png" alt="Cerro el Tablazo - imagen 1">
+         <img src="img/suba2.png" alt="Cerro el Tablazo - imagen 2">
+         <img src="img/suba3.png" alt="Cerro el Tablazo - imagen 3">
+       </div>
+       <button class="prev" aria-label="Anterior">&#10094;</button>
+       <button class="next" aria-label="Siguiente">&#10095;</button>
+     </div>
+     <!-- FIN CARRUSEL -->
+     <p>Cerro con rutas de senderismo y vistas panorámicas de la Sabana de Bogotá.</p>
+     <a href="https://maps.app.goo.gl/5vmAUqDPDsk48xR79" target="_blank" class="map-btn">📍 Ver en Google Maps</a>
     </div>
   </div>
- </div>
+</div>
+
 
  <!-- Modal El Rosal -->
  <div id="modalElRosal" class="modal">
@@ -877,25 +884,27 @@
 
  <!-- Modal Bojacá -->
  <div id="modalBojaca" class="modal">
-  <div class="modal-content">
-    <span class="close" onclick="closeModal('modalBojaca')">&times;</span>
-    <h2 class="modal-title">Bojacá</h2>
-
+  <div class="modal-content" role="dialog" aria-labelledby="bojacaTitle">
+   <span class="modal-close" onclick="closeModal('modalBojaca')">&times;</span>
+   <h2 id="bojacaTitle">Bojacá</h2>
+  
     <div class="site">
-      <h3>🙏 Santuario de la Virgen de la Salud</h3>
-      <img src="https://www.cundinamarca.gov.co/sites/cundinamarca/content/files/000782/39201_bojaca.jpg" alt="Santuario Virgen de la Salud Bojacá">
-      <p>Importante centro de peregrinación religiosa en Cundinamarca, visitado por miles de feligreses.</p>
-      <a href="https://maps.app.goo.gl/RkgkEfFvV5p3Z9RTA" target="_blank" class="map-btn">📍 Ver en Google Maps</a>
-    </div>
-
-    <div class="site">
-      <h3>🏘 Parque Principal</h3>
-      <img src="https://mapio.net/images-p/103571499.jpg" alt="Parque Principal Bojacá">
-      <p>Sitio emblemático donde se concentra la vida social y cultural del municipio.</p>
-      <a href="https://maps.app.goo.gl/1tAmRa4Afk4Xkgrq6" target="_blank" class="map-btn">📍 Ver en Google Maps</a>
+     <h3>Piedras del Chivo Negro</h3>
+     <!-- CARRUSEL -->
+     <div class="carousel" aria-roledescription="carouselBojaca">
+       <div class="carousel-images">
+         <img src="img/boja1.png" alt="Piedras del Chivo Negro - imagen 1">
+         <img src="img/boja2.png" alt="Piedras del Chivo Negro - imagen 2">
+         <img src="img/boja3.png" alt="Piedras del Chivo Negro - imagen 3">
+       </div>
+       <button class="prev" aria-label="Anterior">&#10094;</button>
+       <button class="next" aria-label="Siguiente">&#10095;</button>
+     </div>
+     <!-- FIN CARRUSEL -->
+     <a href="https://maps.app.goo.gl/Ei6XXsz1uDqLFHwZ6" target="_blank" class="map-btn">📍 Ver en Google Maps</a>
     </div>
   </div>
- </div>
+</div>
 
  <!-- Modal Zipacón -->
  <div id="modalZipacon" class="modal">
@@ -989,6 +998,67 @@
       });
     });
   </script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const sections = document.querySelectorAll("main section");
+      const links = document.querySelectorAll("nav a");
+      let currentSection = "inicio";
+
+      function showSection(id) {
+        sections.forEach(section => {
+          if (section.id === id) {
+            section.classList.add("active");
+          } else {
+            section.classList.remove("active");
+          }
+        });
+      }
+      links.forEach(link => {
+        link.addEventListener("click", (e) => {
+          e.preventDefault();
+          const targetId = link.getAttribute("href").substring(1);
+          if (targetId !== currentSection) {
+            showSection(targetId);
+            currentSection = targetId;
+            window.scrollTo({ top: 0, behavior: "smooth" });
+          }
+        });
+      });
+
+      showSection("inicio");
+    });
+  </script> 
+  <script>
+   document.addEventListener("DOMContentLoaded", () => {
+   const img = document.getElementById('mapaImagen');
+   const map = document.querySelector('map[name="image-map"]');
+   const areas = map.querySelectorAll('area');
+  
+   // Guarda las coordenadas originales
+   const originalCoords = [];
+   areas.forEach(area => {
+    originalCoords.push(area.getAttribute('coords'));
+   });
+  
+   function resizeMap() {
+    const widthRatio = img.clientWidth / 1458;
+    const heightRatio = img.clientHeight / 818;
+    
+    areas.forEach((area, index) => {
+      const coords = originalCoords[index].split(',');
+      const newCoords = coords.map((coord, i) => {
+        return Math.round(coord * (i % 2 === 0 ? widthRatio : heightRatio));
+      });
+      area.setAttribute('coords', newCoords.join(','));
+    });
+   }
+  
+   // Ejecutar al cargar y al redimensionar
+   img.addEventListener('load', resizeMap);
+   window.addEventListener('resize', resizeMap);
+   resizeMap(); // Ejecutar inmediatamente
+   });
+  </script> 
 </body>
 </html>
 
