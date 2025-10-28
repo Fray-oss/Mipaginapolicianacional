@@ -48,7 +48,7 @@
       align-items:center;
     }
   .logo{
-       width: 200px; /* ajusta el tamaño a tu gusto */
+       width: 400px; /* ajusta el tamaño a tu gusto */
         height: auto; 
         margin-bottom: 8px;
       }
@@ -179,13 +179,88 @@
       display: inline-block;
       padding-bottom: 5px;
     }
+
+    #contacto {
+      text-align: center;
+      padding: 40px 20px;
+      background-color: #f4f4f4;
+    }
+
+    .contacto-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .contacto-img-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    .contacto-img {
+      width: 100%;
+      max-width: 1000px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.2);
+    }
+
+    /* Enlaces invisbles sobre la imagen */
+    .telefono-link {
+      position: absolute;
+      display: block;
+      width: 150px; /* ajusta segun el tamaño del texto del numero */
+      height: 35px;
+      cursor: pointer;
+      opacity: 0; /* invisible pero clickeable */
+    }
+
+    /* Ajusta estas posiciones para que coincidan con tus numeros en la imagen */
+    .telefono1 {
+      top: 70%;
+      left: 58%;
+    }
+
+    .telefono2 {
+      top: 81%;
+      left: 58%;
+    }
+
+    .telefono-link:hover {
+      background-color: rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .contacto-img-container:hover .contacto-img {
+      filter: brightness(0.95);
+      transition: filter 0.3s;
+    }
+
+    .telefono-link::after {
+      content: "📞 Llamar";
+      position: absolute;
+      bottom: 120%;
+      left: 10%;
+      background: rgba(0,0,0,0.7);
+      color: #fff;
+      font-size: 14px;
+      padding: 4px 8px;
+      border-radius: 6px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+
+    .telefono-link:hover::after {
+      opacity: 1;
+    }
   </style>
 </head>
 <body>
   <header class="navbar">
    <div class="logo-titulo">
     <img src="img/logo.png" alt="policia" class="logo">
-    <h1>#TurismoSeguro En La Región Metropolitana de Policia La Sabana</h1>
+    <h1>#E-TurismoSeguro Departamento De Policia La Sabana (DESAB)</h1>
     <div style="font-size:.9rem;margin-top:6px">Grupo de Protección al Turismo y Patrimonio Nacional</div>
   </header>
 
@@ -296,26 +371,26 @@
       </div>
       
       <map name="image-map">
-        <area target="" alt="Zipaquirá" title="Zipaquirá" href="javascript:void(0)" coords="741,200,728,206,719,218,701,223,692,237,692,252,692,267,682,280,686,287,690,295,690,304,686,312,683,321,708,323,709,335,721,341,732,348,732,357,749,348,758,338,767,343,776,345,781,334,791,332,795,341,803,350,812,344,817,336,811,323,821,319,833,314,840,308,829,301,820,296,825,283,824,267,840,245,834,228,825,219,817,225,812,236,795,227,776,218,761,209,750,214" shape="poly" onclick="openModal('modalZipaquira')" class="mapa-area">
-        <area target="" alt="Cogua" title="Cogua" href="javascript:void(0)" coords="844,240,847,232,857,229,855,216,864,218,875,219,884,222,887,213,895,215,898,209,901,197,896,191,887,193,882,187,875,184,871,176,861,170,855,162,848,156,838,155,829,164,821,166,815,171,809,176,802,180,789,173,784,164,779,155,770,149,763,151,754,153,744,160,736,161,722,164,722,171,726,180,723,188,726,195,727,204,737,197,745,202,750,210,759,207,771,211,782,219,791,223,802,229,811,231,816,222,825,216,833,220,837,227" shape="poly" onclick="openModal('modalCogua')" class="mapa-area">
-        <area target="" alt="Nemocón" title="Nemocón" href="javascript:void(0)" coords="842,307,850,300,860,295,870,295,877,290,886,286,890,278,896,272,901,262,906,256,900,251,894,246,890,240,895,232,901,224,891,216,883,223,873,218,864,220,857,216,856,227,851,233,842,242,837,250,832,256,827,263,824,272,824,280,825,286,819,294,830,301" shape="poly" onclick="openModal('modalNemocon')" class="mapa-area">
-        <area target="" alt="Gachancipá" title="Gachancipá" href="javascript:void(0)" coords="875,295,883,301,893,303,887,310,896,314,896,327,888,331,884,339,875,347,870,353,858,350,852,341,858,335,855,328,849,323,844,312,844,304,855,296" shape="poly" onclick="openModal('modalGachancipa')" class="mapa-area">
-        <area target="" alt="Tocancipá" title="Tocancipá" href="javascript:void(0)" coords="869,358,864,363,853,367,847,379,837,388,826,385,817,379,811,374,799,371,790,365,785,356,776,350,775,341,780,335,789,336,794,343,797,349,803,354,811,343,819,338,815,328,816,321,824,318,833,317,842,310,844,321,848,327,852,334,860,349,852,344" shape="poly" onclick="openModal('modalTocancipa')" class="mapa-area">
-        <area target="" alt="Sopó" title="Sopó" href="javascript:void(0)" coords="837,394,833,400,832,409,830,420,828,427,828,436,821,442,811,444,802,445,800,454,801,463,791,460,782,460,774,463,768,458,760,458,763,445,769,436,774,424,778,415,779,404,772,396,766,391,757,384,763,376,763,363,772,355,772,346,781,354,787,359,792,368,802,375,812,377,820,383,828,388" shape="poly" onclick="openModal('modalSopo')" class="mapa-area">
-        <area target="" alt="La Calera" title="La Calera" href="javascript:void(0)" coords="766,476,757,480,750,486,750,497,749,507,758,514,758,521,762,529,771,519,781,521,779,529,770,532,764,539,758,548,758,557,762,568,761,575,752,579,755,590,755,600,763,584,771,581,777,572,786,562,785,570,782,579,789,583,797,574,804,566,816,560,816,568,812,577,819,578,825,586,829,596,821,599,816,606,825,609,828,619,835,624,844,626,851,614,856,606,860,597,870,593,880,593,891,595,902,595,909,588,900,582,898,573,898,565,900,552,891,548,884,553,884,543,878,538,869,543,866,552,862,561,856,569,847,564,843,557,839,546,831,537,840,531,831,523,842,519,833,515,828,509,821,508,820,500,816,491,825,491,829,482,819,482,812,478,802,477,797,469,786,464,773,464,761,464" shape="poly" onclick="openModal('modalLaCalera')" class="mapa-area">
-        <area target="" alt="Chía" title="Chía" href="javascript:void(0)" coords="761,390,759,398,750,403,746,410,734,410,724,408,718,402,708,397,700,393,699,402,694,408,696,417,692,428,686,433,694,439,701,446,708,448,718,451,726,450,735,452,744,455,753,456,758,450,762,435,768,430,772,419,775,410,776,398" shape="poly" onclick="openModal('modalChia')" class="mapa-area">
-        <area target="" alt="Cajicá" title="Cajicá" href="javascript:void(0)" coords="706,385,713,380,721,374,730,370,727,362,735,356,748,350,757,343,766,341,766,350,763,359,761,368,757,377,757,388,755,395,749,401,744,407,737,406,727,406,719,401,710,397,701,394" shape="poly" onclick="openModal('modalCajica')" class="mapa-area">
-        <area target="" alt="Tabio" title="Tabio" href="javascript:void(0)" coords="682,322,673,323,668,328,661,336,663,347,663,357,663,367,658,375,652,384,643,390,651,395,660,398,668,402,678,402,686,404,695,401,697,389,704,383,713,376,721,371,724,365,727,353,727,344,717,341,708,334,705,323,694,322" shape="poly" onclick="openModal('modalTabio')" class="mapa-area">
-        <area target="" alt="Tenjo" title="Tenjo" href="javascript:void(0)" coords="650,397,647,403,639,406,630,408,623,415,619,421,614,429,614,439,607,444,601,452,600,459,592,469,584,473,578,479,580,488,587,484,596,480,600,495,610,493,618,497,624,509,629,501,630,487,634,477,639,470,654,460,663,460,669,448,677,442,685,434,691,425,692,416,694,404,685,407,678,402,669,403,660,399" shape="poly" onclick="openModal('modalTenjo')" class="mapa-area">
-        <area target="" alt="Cota" title="Cota" href="javascript:void(0)" coords="688,441,681,444,673,446,668,456,663,466,656,464,646,468,638,474,634,483,629,495,632,505,630,515,637,517,636,524,650,522,660,522,655,510,665,501,668,492,668,484,674,475,682,473,688,479,694,469,692,459,691,448" shape="poly" onclick="openModal('modalCota')" class="mapa-area">
-        <area target="" alt="Funza" title="Funza" href="javascript:void(0)" coords="569,479,563,486,556,495,551,504,558,513,569,519,566,528,573,533,576,542,585,549,597,550,609,550,620,550,619,542,630,541,628,532,636,527,636,519,628,515,619,505,615,496,607,495,596,493,593,483,582,488,576,483" shape="poly" onclick="openModal('modalFunza')" class="mapa-area">
-        <area target="" alt="Mosquera" title="Mosquera" href="javascript:void(0)" coords="559,525,550,530,546,536,542,544,543,555,535,557,525,552,515,544,505,537,501,548,506,558,510,567,510,577,512,592,523,603,532,608,543,601,547,607,553,598,565,598,574,602,581,590,595,583,604,585,613,585,624,577,619,571,613,561,614,553,597,550,588,550,579,546,574,536,566,528" shape="poly" onclick="openModal('modalMosquera')" class="mapa-area">
-        <area target="" alt="Bojacá" title="Bojacá" href="javascript:void(0)" coords="499,538,493,531,486,523,478,519,476,510,468,501,455,501,449,508,445,517,440,524,427,528,418,532,412,535,415,546,419,554,428,554,440,560,449,562,457,563,459,575,460,585,471,589,480,593,491,600,498,608,508,613,520,613,521,604,515,599,512,590,512,581,504,576,509,567,504,555,500,547" shape="poly" onclick="openModal('modalBojaca')" class="mapa-area">
-        <area target="" alt="Zipacón" title="Zipacón" href="javascript:void(0)" coords="461,497,451,492,441,487,434,484,425,477,415,477,410,487,402,490,401,500,405,506,398,518,393,526,383,537,374,541,387,549,400,545,410,535,420,533,436,528,441,521,446,513,452,501" shape="poly" onclick="openModal('modalZipacon')" class="mapa-area">
-        <area target="" alt="Subachoque" title="Subachoque" href="javascript:void(0)" coords="678,276,667,272,656,273,645,276,641,285,636,291,628,292,619,294,615,303,603,307,592,308,592,317,580,313,571,321,567,331,563,341,570,353,569,362,558,365,552,371,562,375,573,376,584,379,596,384,600,394,607,395,609,406,606,414,593,424,600,429,610,426,616,420,625,406,634,406,642,399,645,386,650,379,656,372,659,361,661,348,660,338,665,327,673,321,681,317,682,304,681,294,674,290" shape="poly" onclick="openModal('modalSubachoque')" class="mapa-area">
-        <area target="" alt="El Rosal" title="El Rosal" href="javascript:void(0)" coords="545,376,534,380,529,386,531,395,524,401,518,410,513,420,521,424,525,432,527,441,531,448,539,457,548,457,558,456,567,451,576,443,585,433,594,428,598,420,603,411,607,402,597,394,596,385,587,383,578,381,569,380,558,376" shape="poly" onclick="openModal('modalElRosal')" class="mapa-area">
-        <area target="" alt="Facatativá" title="Facatativá" href="javascript:void(0)" coords="508,420,497,424,490,421,481,417,468,406,454,403,437,410,433,417,424,419,405,416,393,416,391,425,397,430,397,441,405,451,409,460,413,466,426,470,437,477,444,483,455,488,466,493,472,502,478,493,485,490,495,484,495,473,504,478,515,482,524,478,531,465,533,455,529,446,525,435,518,425" shape="poly" onclick="openModal('modalFacatativa')" class="mapa-area">
-        <area target="" alt="Madrid" title="Madrid" href="javascript:void(0)" coords="603,436,592,435,584,444,575,449,563,459,552,460,540,463,533,467,535,474,527,480,520,490,506,483,498,477,495,486,484,494,476,505,478,516,486,522,493,530,503,538,513,539,521,545,527,553,535,553,543,553,543,534,556,526,563,520,554,513,552,505,554,494,563,483,571,474,579,473,589,468,593,459,598,451,602,443" shape="poly" onclick="openModal('modalMadrid')" class="mapa-area">
+        <area target="" alt="Zipaquirá" title="Zipaquirá" href="javascript:void(0)" coords="741,200,728,206,719,218,701,223,692,237,692,252,692,267,682,280,686,287,690,295,690,304,686,312,683,321,708,323,709,335,721,341,732,348,732,357,749,348,758,338,767,343,776,345,781,334,791,332,795,341,803,350,812,344,817,336,811,323,821,319,833,314,840,308,829,301,820,296,825,283,824,267,840,245,834,228,825,219,817,225,812,236,795,227,776,218,761,209,750,214" shape="poly" onclick="openMapModal('Zipaquira')" class="mapa-area">
+        <area target="" alt="Cogua" title="Cogua" href="javascript:void(0)" coords="844,240,847,232,857,229,855,216,864,218,875,219,884,222,887,213,895,215,898,209,901,197,896,191,887,193,882,187,875,184,871,176,861,170,855,162,848,156,838,155,829,164,821,166,815,171,809,176,802,180,789,173,784,164,779,155,770,149,763,151,754,153,744,160,736,161,722,164,722,171,726,180,723,188,726,195,727,204,737,197,745,202,750,210,759,207,771,211,782,219,791,223,802,229,811,231,816,222,825,216,833,220,837,227" shape="poly" onclick="openMapModal('Cogua')" class="mapa-area">
+        <area target="" alt="Nemocón" title="Nemocón" href="javascript:void(0)" coords="842,307,850,300,860,295,870,295,877,290,886,286,890,278,896,272,901,262,906,256,900,251,894,246,890,240,895,232,901,224,891,216,883,223,873,218,864,220,857,216,856,227,851,233,842,242,837,250,832,256,827,263,824,272,824,280,825,286,819,294,830,301" shape="poly" onclick="openMapModal('Nemocon')" class="mapa-area">
+        <area target="" alt="Gachancipá" title="Gachancipá" href="javascript:void(0)" coords="875,295,883,301,893,303,887,310,896,314,896,327,888,331,884,339,875,347,870,353,858,350,852,341,858,335,855,328,849,323,844,312,844,304,855,296" shape="poly" onclick="openMapModal('Gachancipa')" class="mapa-area">
+        <area target="" alt="Tocancipá" title="Tocancipá" href="javascript:void(0)" coords="869,358,864,363,853,367,847,379,837,388,826,385,817,379,811,374,799,371,790,365,785,356,776,350,775,341,780,335,789,336,794,343,797,349,803,354,811,343,819,338,815,328,816,321,824,318,833,317,842,310,844,321,848,327,852,334,860,349,852,344" shape="poly" onclick="openMapModal('Tocancipa')" class="mapa-area">
+        <area target="" alt="Sopó" title="Sopó" href="javascript:void(0)" coords="837,394,833,400,832,409,830,420,828,427,828,436,821,442,811,444,802,445,800,454,801,463,791,460,782,460,774,463,768,458,760,458,763,445,769,436,774,424,778,415,779,404,772,396,766,391,757,384,763,376,763,363,772,355,772,346,781,354,787,359,792,368,802,375,812,377,820,383,828,388" shape="poly" onclick="openMapModal('Sopo')" class="mapa-area">
+        <area target="" alt="La Calera" title="La Calera" href="javascript:void(0)" coords="766,476,757,480,750,486,750,497,749,507,758,514,758,521,762,529,771,519,781,521,779,529,770,532,764,539,758,548,758,557,762,568,761,575,752,579,755,590,755,600,763,584,771,581,777,572,786,562,785,570,782,579,789,583,797,574,804,566,816,560,816,568,812,577,819,578,825,586,829,596,821,599,816,606,825,609,828,619,835,624,844,626,851,614,856,606,860,597,870,593,880,593,891,595,902,595,909,588,900,582,898,573,898,565,900,552,891,548,884,553,884,543,878,538,869,543,866,552,862,561,856,569,847,564,843,557,839,546,831,537,840,531,831,523,842,519,833,515,828,509,821,508,820,500,816,491,825,491,829,482,819,482,812,478,802,477,797,469,786,464,773,464,761,464" shape="poly" onclick="openMapModal('LaCalera')" class="mapa-area">
+        <area target="" alt="Chía" title="Chía" href="javascript:void(0)" coords="761,390,759,398,750,403,746,410,734,410,724,408,718,402,708,397,700,393,699,402,694,408,696,417,692,428,686,433,694,439,701,446,708,448,718,451,726,450,735,452,744,455,753,456,758,450,762,435,768,430,772,419,775,410,776,398" shape="poly" onclick="openMapModal('Chia')" class="mapa-area">
+        <area target="" alt="Cajicá" title="Cajicá" href="javascript:void(0)" coords="706,385,713,380,721,374,730,370,727,362,735,356,748,350,757,343,766,341,766,350,763,359,761,368,757,377,757,388,755,395,749,401,744,407,737,406,727,406,719,401,710,397,701,394" shape="poly" onclick="openMapModal('Cajica')" class="mapa-area">
+        <area target="" alt="Tabio" title="Tabio" href="javascript:void(0)" coords="682,322,673,323,668,328,661,336,663,347,663,357,663,367,658,375,652,384,643,390,651,395,660,398,668,402,678,402,686,404,695,401,697,389,704,383,713,376,721,371,724,365,727,353,727,344,717,341,708,334,705,323,694,322" shape="poly" onclick="openMapModal('Tabio')" class="mapa-area">
+        <area target="" alt="Tenjo" title="Tenjo" href="javascript:void(0)" coords="650,397,647,403,639,406,630,408,623,415,619,421,614,429,614,439,607,444,601,452,600,459,592,469,584,473,578,479,580,488,587,484,596,480,600,495,610,493,618,497,624,509,629,501,630,487,634,477,639,470,654,460,663,460,669,448,677,442,685,434,691,425,692,416,694,404,685,407,678,402,669,403,660,399" shape="poly" onclick="openMapModal('Tenjo')" class="mapa-area">
+        <area target="" alt="Cota" title="Cota" href="javascript:void(0)" coords="688,441,681,444,673,446,668,456,663,466,656,464,646,468,638,474,634,483,629,495,632,505,630,515,637,517,636,524,650,522,660,522,655,510,665,501,668,492,668,484,674,475,682,473,688,479,694,469,692,459,691,448" shape="poly" onclick="openMapModal('Cota')" class="mapa-area">
+        <area target="" alt="Funza" title="Funza" href="javascript:void(0)" coords="569,479,563,486,556,495,551,504,558,513,569,519,566,528,573,533,576,542,585,549,597,550,609,550,620,550,619,542,630,541,628,532,636,527,636,519,628,515,619,505,615,496,607,495,596,493,593,483,582,488,576,483" shape="poly" onclick="openMapModal('Funza')" class="mapa-area">
+        <area target="" alt="Mosquera" title="Mosquera" href="javascript:void(0)" coords="559,525,550,530,546,536,542,544,543,555,535,557,525,552,515,544,505,537,501,548,506,558,510,567,510,577,512,592,523,603,532,608,543,601,547,607,553,598,565,598,574,602,581,590,595,583,604,585,613,585,624,577,619,571,613,561,614,553,597,550,588,550,579,546,574,536,566,528" shape="poly" onclick="openMapModal('Mosquera')" class="mapa-area">
+        <area target="" alt="Bojacá" title="Bojacá" href="javascript:void(0)" coords="499,538,493,531,486,523,478,519,476,510,468,501,455,501,449,508,445,517,440,524,427,528,418,532,412,535,415,546,419,554,428,554,440,560,449,562,457,563,459,575,460,585,471,589,480,593,491,600,498,608,508,613,520,613,521,604,515,599,512,590,512,581,504,576,509,567,504,555,500,547" shape="poly" onclick="openMapModal('Bojaca')" class="mapa-area">
+        <area target="" alt="Zipacón" title="Zipacón" href="javascript:void(0)" coords="461,497,451,492,441,487,434,484,425,477,415,477,410,487,402,490,401,500,405,506,398,518,393,526,383,537,374,541,387,549,400,545,410,535,420,533,436,528,441,521,446,513,452,501" shape="poly" onclick="openMapModal('Zipacon')" class="mapa-area">
+        <area target="" alt="Subachoque" title="Subachoque" href="javascript:void(0)" coords="678,276,667,272,656,273,645,276,641,285,636,291,628,292,619,294,615,303,603,307,592,308,592,317,580,313,571,321,567,331,563,341,570,353,569,362,558,365,552,371,562,375,573,376,584,379,596,384,600,394,607,395,609,406,606,414,593,424,600,429,610,426,616,420,625,406,634,406,642,399,645,386,650,379,656,372,659,361,661,348,660,338,665,327,673,321,681,317,682,304,681,294,674,290" shape="poly" onclick="openMapModal('Subachoque')" class="mapa-area">
+        <area target="" alt="El Rosal" title="El Rosal" href="javascript:void(0)" coords="545,376,534,380,529,386,531,395,524,401,518,410,513,420,521,424,525,432,527,441,531,448,539,457,548,457,558,456,567,451,576,443,585,433,594,428,598,420,603,411,607,402,597,394,596,385,587,383,578,381,569,380,558,376" shape="poly" onclick="openMapModal('ElRosal')" class="mapa-area">
+        <area target="" alt="Facatativá" title="Facatativá" href="javascript:void(0)" coords="508,420,497,424,490,421,481,417,468,406,454,403,437,410,433,417,424,419,405,416,393,416,391,425,397,430,397,441,405,451,409,460,413,466,426,470,437,477,444,483,455,488,466,493,472,502,478,493,485,490,495,484,495,473,504,478,515,482,524,478,531,465,533,455,529,446,525,435,518,425" shape="poly" onclick="openMapModal('Facatativa')" class="mapa-area">
+        <area target="" alt="Madrid" title="Madrid" href="javascript:void(0)" coords="603,436,592,435,584,444,575,449,563,459,552,460,540,463,533,467,535,474,527,480,520,490,506,483,498,477,495,486,484,494,476,505,478,516,486,522,493,530,503,538,513,539,521,545,527,553,535,553,543,553,543,534,556,526,563,520,554,513,552,505,554,494,563,483,571,474,579,473,589,468,593,459,598,451,602,443" shape="poly" onclick="openMapModal('Madrid')" class="mapa-area">
       </map>
     </section>
 
@@ -426,7 +501,16 @@
     <!-- Contacto -->
     <section id="contacto">
       <h2>Contacto</h2>
-      <p style="text-align:center">Unidad de Turismo - Policía Nacional · turismo@policia.gov.co · +57 (1) 515 9111</p>
+
+      <div class="contacto-container">
+        <div class="contacto-img-container">
+          <img src="img/dipro.png" alt="Contacto DIPRO" class="contacto-img">
+
+          <!-- Enlaces invisibles sobre la imagen -->
+          <a href="tel:3223486067" class="telefono-link telefono1"></a>
+          <a href="tel:3223486071" class="telefono-link telefono2"></a>
+        </div>
+      </div>
     </section>
   </main>
 
@@ -434,6 +518,308 @@
     © 2025 Policía Nacional - Unidad de Turismo — Sabana de Bogotá
   </footer>
 
+  <!-- MODALES DEL MAPA (INDEPENDIENTES) -->
+
+  <!-- Zipaquirá -->
+  <div id="modalMapaZipaquira" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal('modalMapaZipaquira')">&times;</span>
+      <h2 style="color:var(--verde2)">📍 Zipaquirá</h2>
+      <p><strong>Ubicación:</strong> Sabana Norte de Bogotá</p>
+      <img src="img/zipaquira.png" alt="Zipaquirá" style="max-width:100%;height:auto;border-radius:8px;margin-top:10px;margin-bottom:10px">
+      
+      <h3 style="color:var(--verde2);margin-top:15px">Descripción:</h3>
+      <p>Se encuentra ubicado a 42 kilómetros al noreste de Bogotá. En el dialecto muisca traduce “”Pie del Cerro del Zipa””, es uno de los lugares turísticos más importantes de Colombia, allí se encuentra una de las catedrales más imponentes del mundo y primera maravilla de Colombia: La Catedral de Sal. El casco urbano del municipio es otro espacio rico en detalles arquitectónicos e históricos, declarado bien de interés cultural de orden Nacional en el año 2005. Ajiaco con pollo Sobrebarriga al horno Almojábana Mantecada Cuajada con melado Garulla.</p>
+      
+      
+      <a class="btn-map" href="https://www.google.com/maps/place/Zipaquir%C3%A1" target="_blank">📍 Ver en Google Maps</a>
+    </div>
+  </div>
+
+  <!-- Cogua -->
+  <div id="modalMapaCogua" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal('modalMapaCogua')">&times;</span>
+      <h2 style="color:var(--verde2)">📍 Cogua</h2>
+      <p><strong>Ubicación:</strong> Sabana Norte de Bogotá</p>
+      <img src="img/cogua.png" alt="Cogua" style="max-width:100%;height:auto;border-radius:8px;margin-top:10px;margin-bottom:10px">
+      
+      <h3 style="color:var(--verde2);margin-top:15px">Descripción:</h3>
+      <p>Se encuentra a 40 kilómetros de Bogotá. Cogua en lengua muisca significa “apoyo del cerro”. La base de su economía es la agricultura, la agroindustria, el turismo e industria. Por tradición tiene fábricas de ladrillo, fábricas de lácteos, artesanías y por su estratégica ubicación es despensa para la capital. Cuenta con diversos atractivos turísticos de naturaleza, turismo cultural, histórico y gastronómico, siendo un excelente destino. Entre sus platos típicos se encuentra la fritanga coguana, el tamal de calabaza, la trucha, el ajiaco, el cuchuco con espinazo y variedad de postres.</p>
+      
+      <a class="btn-map" href="https://www.google.com/maps/place/Cogua" target="_blank">📍 Ver en Google Maps</a>
+    </div>
+  </div>
+
+  <!-- Nemocón -->
+  <div id="modalMapaNemocon" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal('modalMapaNemocon')">&times;</span>
+      <h2 style="color:var(--verde2)">📍 Nemocón</h2>
+      <p><strong>Ubicación:</strong> Sabana Norte de Bogotá</p>
+      <img src="img/nemocon.png" alt="Nemocon" style="max-width:100%;height:auto;border-radius:8px;margin-top:10px;margin-bottom:10px">
+      
+      <h3 style="color:var(--verde2);margin-top:15px">Descripción:</h3>
+      <p>Nemocón, significa “Lamento o Rugido de Guerrero”, está ubicado a 45 kilómetros de Bogotá. Característico por la explotación salina y minera, cuenta con zonas ricas en vegetación y construcciones de la época colonial con una importante carga histórica. Nemocón es un municipio mágico, tradicional y cultural que ha trascendido las fronteras a través de su majestuosa Mina de Sal, un destino atractivo para disfrutar del turismo cultural e histórico, su riqueza arqueológica, arquitectónica y costumbres culturales. Gallina criolla, Fritanga, Sobrebarriga al horno, Ajiaco, Mazamorra chiquita, Cuchuco con espinazo.</p>
+      
+      <a class="btn-map" href="https://www.google.com/maps/place/Nemoc%C3%B3n" target="_blank">📍 Ver en Google Maps</a>
+    </div>
+  </div>
+
+  <!-- Tocancipá -->
+  <div id="modalMapaTocancipa" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal('modalMapaTocancipa')">&times;</span>
+      <h2 style="color:var(--verde2)">📍 Tocancipá</h2>
+      <p><strong>Ubicación:</strong> Sabana Norte de Bogotá</p>
+      <img src="img/tocancipa.png" alt="Tocancipá" style="max-width:100%;height:auto;border-radius:8px;margin-top:10px;margin-bottom:10px">
+      
+      <h3 style="color:var(--verde2);margin-top:15px">Descripción:</h3>
+      <p>Tocancipá en lengua chibcha “Toquencipe” significa “Pampanillas de Nuestro Padre” y era conocido por los nativos como el “Valle de las Alegrías del Zipa” o como el “Corazón de los territorios del Zipa”. Ubicado a 23 kilómetros de Bogotá, es considerada la capital industrial del norte de la sabana. Su cultura, mitos y raíces muiscas se suman a sus construcciones de estilo colonial, brinda una apasionante forma de llegar en el Tren de la Sabana y cuenta con el emblemático Parque Jaime Duque, para hacer de este un destino digno de visitar. Almojábanas, mazamorra y envueltos.</p>
+      
+      <a class="btn-map" href="https://www.google.com/maps/place/Tocancip%C3%A1" target="_blank">📍 Ver en Google Maps</a>
+    </div>
+  </div>
+
+  <!-- Gachancipá -->
+  <div id="modalMapaGachancipa" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal('modalMapaGachancipa')">&times;</span>
+      <h2 style="color:var(--verde2)">📍 Gachancipá</h2>
+      <p><strong>Ubicación:</strong> Sabana Norte de Bogotá</p>
+      <img src="img/gachancipa.png" alt="Gachancipá" style="max-width:100%;height:auto;border-radius:8px;margin-top:10px;margin-bottom:10px">
+      
+      <h3 style="color:var(--verde2);margin-top:15px">Descripción:</h3>
+      <p>Se encuentra ubicado a 35 kilómetros al norte de Bogotá. Proviene del vocablo “Gachana” que traduce “Enfermedad del Zipa”, también se conoce como el “Valle de las Tristezas del Zipa” y era predilecto para curar los males del cuerpo y alma. Es un municipio de profunda herencia Muisca, que mantiene vivas sus tradiciones campesinas del altiplano. Su paisaje natural se adorna con los cultivos de flores, naciente actividad industrial y su arquitectura colonial, donde destacan preservadas iglesias y capillas, en su relevante patrimonio cultural y ecoturístico. Gallina fría con envuelto 3 puntas. Mantecada de quinua. Jugo de uchuva. Empanadas de carne.</p>
+      
+      <a class="btn-map" href="https://www.google.com/maps/place/Gachancip%C3%A1" target="_blank">📍 Ver en Google Maps</a>
+    </div>
+  </div>
+
+  <!-- Sopó -->
+  <div id="modalMapaSopo" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal('modalMapaSopo')">&times;</span>
+      <h2 style="color:var(--verde2)">📍 Sopó</h2>
+      <p><strong>Ubicación:</strong> Sabana Norte de Bogotá</p>
+      <img src="img/sopo.png" alt="Sopó" style="max-width:100%;height:auto;border-radius:8px;margin-top:10px;margin-bottom:10px">
+      
+      <h3 style="color:var(--verde2);margin-top:15px">Descripción:</h3>
+      <p>Se encuentra a 39 kilómetros al norte de Bogotá. Fue fundado el 25 de mayo de 1.653 por Fray Francisco Chacón, su nombre en lengua chibcha significa “Piedra o Cerro fuerte”. Sopó en tiempos del imperio de la civilización muisca, estuvo conformado políticamente por tres territorios independientes entre sí: Sopó, Cueca y Meusa. Es un excelente destino para hacer turismo de naturaleza, turismo de aventura y turismo gastronómico, donde se puede disfrutar de Productos lácteos, Papa chorreada, Variedad de postres, Ajiaco.</p>
+      
+      <a class="btn-map" href="https://www.google.com/maps/place/Sop%C3%B3" target="_blank">📍 Ver en Google Maps</a>
+    </div>
+  </div>
+
+  <!-- La Calera -->
+  <div id="modalMapaLaCalera" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal('modalMapaLaCalera')">&times;</span>
+      <h2 style="color:var(--verde2)">📍 La Calera</h2>
+      <p><strong>Ubicación:</strong> Oriente de Bogotá</p>
+      <img src="img/lacalera.png" alt="La Calera" style="max-width:100%;height:auto;border-radius:8px;margin-top:10px;margin-bottom:10px">
+      
+      <h3 style="color:var(--verde2);margin-top:15px">Descripción:</h3>
+      <p>Ubicada a 19 kilómetros de Bogotá, La Calera era llamada “cercado prestado”. Su cercanía a la capital la convierte en un destino que brinda variedades a sus visitantes. Las artesanías son de gran mercado cultural para los visitantes, tejidos en lana, atractivos turísticos para todos los gustos; fácilmente encontramos diversas propuestas de restaurantes típicos y hospedajes rurales para disfrutar del paisaje montañoso y tranquilo. Sus actividades económicas principales son: la producción agrícola (papa, cebolla y hortalizas), flores, ganadería, producción de agua mineral, y la gastronomía. Su zona de influencia del PNN Chingaza y sus cuencas hídricas Río Blanco y Río Teusaca, hacen de este municipio uno de los destinos turísticos más llamativos de la región. Envueltos, Arepa y Pan de Maíz Pelao, Agua de Panela y Queso, Almojábanas, Pan de Yuca, Masato y Avena Fría, Fritanga</p>
+      
+      <a class="btn-map" href="https://www.google.com/maps/place/La+Calera" target="_blank">📍 Ver en Google Maps</a>
+    </div>
+  </div>
+
+  <!-- Chía -->
+  <div id="modalMapaChia" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal('modalMapaChia')">&times;</span>
+      <h2 style="color:var(--verde2)">📍 Chía</h2>
+      <p><strong>Ubicación:</strong> Sabana Norte de Bogotá</p>
+      <img src="img/chia.png" alt="Chía" style="max-width:100%;height:auto;border-radius:8px;margin-top:10px;margin-bottom:10px">
+      
+      <h3 style="color:var(--verde2);margin-top:15px">Descripción:</h3>
+      <p>Se encuentra ubicado a 15 kilómetros al norte de Bogotá. Chía en lengua chibcha traduce Luna, en este lugar quedaba uno de los templos donde se le rendía tributo y adoración a dicho astro. Es un lugar ideal para disfrutar de su centro histórico con calles cargadas de historia que se refleja en cada uno de los portales. Además, el municipio cuenta con grandes montañas y maravillosos paisajes para escapar del ruido de la ciudad; todo lo anterior, acompañado de una exquisita oferta gastronómica. Entre sus platos típicos podrás encontrar masato, almojábanas, chicha, merengón, amasijos y picada.</p>
+      
+      <a class="btn-map" href="https://www.google.com/maps/place/Ch%C3%ADa" target="_blank">📍 Ver en Google Maps</a>
+    </div>
+  </div>
+
+  <!-- Cajicá -->
+  <div id="modalMapaCajica" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal('modalMapaCajica')">&times;</span>
+      <h2 style="color:var(--verde2)">📍 Cajicá</h2>
+      <p><strong>Ubicación:</strong> Sabana Norte de Bogotá</p>
+      <img src="img/cajica.png" alt="Cajicá" style="max-width:100%;height:auto;border-radius:8px;margin-top:10px;margin-bottom:10px">
+      
+      <h3 style="color:var(--verde2);margin-top:15px">Descripción:</h3>
+      <p>Se encuentra a 17 kilómetros de Bogotá. Cajicá en lengua chibcha quiere decir cercado o fortaleza de piedra. Por su localización en la sabana, es de fácil acceso. Cuenta con una amplia oferta gastronómica, artesanal y cultural, con varios eventos de gran trayectoria y reconocimiento a nivel local y regional. Entre sus platos típicos se destaca el cuchuco de trigo, la mazamorra chiquita, la sobrebarriga al horno, la gallina criolla, el pollo campesino, la fritanga, el ajiaco y la oblea.</p>
+      
+      <a class="btn-map" href="https://www.google.com/maps/place/Cajic%C3%A1" target="_blank">📍 Ver en Google Maps</a>
+    </div>
+  </div>
+
+  <!-- Tabio -->
+  <div id="modalMapaTabio" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal('modalMapaTabio')">&times;</span>
+      <h2 style="color:var(--verde2)">📍 Tabio</h2>
+      <p><strong>Ubicación:</strong> Sabana Norte de Bogotá</p>
+      <img src="img/tabio.png" alt="Tabio" style="max-width:100%;height:auto;border-radius:8px;margin-top:10px;margin-bottom:10px">
+      
+      <h3 style="color:var(--verde2);margin-top:15px">Descripción:</h3>
+      <p>Se encuentra a 24 kilómetros de Bogotá. Viene del vocablo muisca “Teib”, haciendo relación a su ubicación del Boquerón del río Frío. Cuenta con una pintoresca arquitectura colonial con sus calles empedradas, tiene valiosos recursos naturales constituidos por bosques nativos, ríos, zonas aptas para cultivos y fuentes termales. Se puede disfrutar de Tamal de calabaza, Fritanga, Ternera, Merengón Fresas con crema.</p>
+      
+      <a class="btn-map" href="https://www.google.com/maps/place/Tabio" target="_blank">📍 Ver en Google Maps</a>
+    </div>
+  </div>
+
+  <!-- Tenjo -->
+  <div id="modalMapaTenjo" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal('modalMapaTenjo')">&times;</span>
+      <h2 style="color:var(--verde2)">📍 Tenjo</h2>
+      <p><strong>Ubicación:</strong> Sabana Norte de Bogotá</p>
+      <img src="img/tenjo.png" alt="Tenjo" style="max-width:100%;height:auto;border-radius:8px;margin-top:10px;margin-bottom:10px">
+      
+      <h3 style="color:var(--verde2);margin-top:15px">Descripción:</h3>
+      <p>Se encuentra a 37 kilómetros de Bogotá. Es el rincón místico de la provincia Sabana Centro derivado de los ancestros muiscas. Tenjo es un poblado netamente Muisca que tiene como significado “El Boquerón”. Su economía se basa en la agricultura, ganadería, industria y desarrollando actividades agroturísticas. Su parque principal, uno de los 44 Centros Históricos declarados Bien de interés Cultural del ámbito Nacional, característico por su arquitectura colonial, hermosas casas pajisas y arquitectura de estilo republicano, el valle de Tenjo se encuentra enmarcado en montañas con una amplia diversidad natural. Rincón verde, con hermosos lugares sagrados que nos dejaron nuestros antepasados, los indígenas muiscas. Se puede disfrutar de Quesos, Postres, Fritanga, Ajiaco, Gallina criolla.</p>
+      
+      <a class="btn-map" href="https://www.google.com/maps/place/Tenjo" target="_blank">📍 Ver en Google Maps</a>
+    </div>
+  </div>
+
+  <!-- Cota -->
+  <div id="modalMapaCota" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal('modalMapaCota')">&times;</span>
+      <h2 style="color:var(--verde2)">📍 Cota</h2>
+      <p><strong>Ubicación:</strong> Sabana Occidente de Bogotá</p>
+      <img src="img/cota.png" alt="Cota" style="max-width:100%;height:auto;border-radius:8px;margin-top:10px;margin-bottom:10px">
+      
+      <h3 style="color:var(--verde2);margin-top:15px">Descripción:</h3>
+      <p>Se encuentra ubicado a 26 kilómetros de Bogotá. En idioma muisca quiere decir “Crespo” o “Encrespado”. Fue fundada el 29 de noviembre de 1604 por Diego Gómez de Mena. Cota cuenta con un entorno de hermosas montañas y cerros, su vocación económica es agroindustrial, caracterizándose asimismo por prestar servicios de turismo. Entre su comida típica se encuentra la fritanga y la picada de rellena con papa criolla, carne de cerdo, plátano frito, chicharrón y ají.</p>
+      
+      <a class="btn-map" href="https://www.google.com/maps/place/Cota" target="_blank">📍 Ver en Google Maps</a>
+    </div>
+  </div>
+
+  <!-- Funza -->
+  <div id="modalMapaFunza" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal('modalMapaFunza')">&times;</span>
+      <h2 style="color:var(--verde2)">📍 Funza</h2>
+      <p><strong>Ubicación:</strong> Sabana Occidente de Bogotá</p>
+      <img src="img/funza.png" alt="Funza" style="max-width:100%;height:auto;border-radius:8px;margin-top:10px;margin-bottom:10px">
+      
+      <h3 style="color:var(--verde2);margin-top:15px">Descripción:</h3>
+      <p>Se encuentra a 10 km de la ciudad de Bogotá. Funza significa “varón poderoso”, antes de este nombre se llamó Muequetá que significa “campo o sabana de labranza”. Tiene más de 480 años de historia y se caracteriza por contar durante todo el año con una amplia oferta cultural, deportiva y artística, siendo sede de importantes eventos a nivel departamental y nacional. Entre sus platos típicos se destaca la pelanga, la chicha, el masato, la mantecada, la almojábana, la gallina criolla, la fritanga, los amasijos y los postres.</p>
+      
+      <a class="btn-map" href="https://www.google.com/maps/place/Funza" target="_blank">📍 Ver en Google Maps</a>
+    </div>
+  </div>
+
+  <!-- Mosquera -->
+  <div id="modalMapaMosquera" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal('modalMapaMosquera')">&times;</span>
+      <h2 style="color:var(--verde2)">📍 Mosquera</h2>
+      <p><strong>Ubicación:</strong> Sabana Occidente de Bogotá</p>
+      <img src="img/mosquera.png" alt="Mosquera" style="max-width:100%;height:auto;border-radius:8px;margin-top:10px;margin-bottom:10px">
+      
+      <h3 style="color:var(--verde2);margin-top:15px">Descripción:</h3>
+      <p>Se encuentra a 2 kilómetros de Bogotá. Municipio cundinamarqués con vocación agrícola e industrial. Se caracteriza principalmente por ser uno de los territorios con mayor crecimiento en el departamento tanto económica como demográficamente. Sus fortalezas turísticas son el sector gastronómico y las actividades que se realizan como festivales, conciertos, competencias, entre otros. También es ampliamente conocida por la riqueza de su suelo en yacimientos paleontológicos, los cuales han sido objeto de estudio sistemático en años recientes, así como las interesantes manifestaciones de arte rupestre de la América precolombina, que consisten en dibujos hechos con tinta roja en los acantilados de la región. Gallina criolla y Pelanga Criolla. Platos nacionales e internacionales de alta calidad.</p>
+      
+      <a class="btn-map" href="https://www.google.com/maps/place/Mosquera" target="_blank">📍 Ver en Google Maps</a>
+    </div>
+  </div>
+
+  <!-- Madrid -->
+  <div id="modalMapaMadrid" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal('modalMapaMadrid')">&times;</span>
+      <h2 style="color:var(--verde2)">📍 Madrid</h2>
+      <p><strong>Ubicación:</strong> Sabana Occidente de Bogotá</p>
+      <img src="img/madrid.png" alt="Madrid" style="max-width:100%;height:auto;border-radius:8px;margin-top:10px;margin-bottom:10px">
+      
+      <h3 style="color:var(--verde2);margin-top:15px">Descripción:</h3>
+      <p>Se encuentra a 25 kilómetros de Bogotá. Madrid, un crisol de oportunidades. Ciudad emergente bañada por el Río Subachoque, de riqueza exuberante, agrícola por vocación; produce maíz, papa y trigo y se caracteriza por sus flores que son producto de exportación. Madrid alberga a la Fuerza Aérea y su industria inicial da realce al ancestral oficio de la cerámica. Obleas y postres, Derivados del maíz, Productos Cárnicos, Lácteos y Picadas.</p>
+      
+      <a class="btn-map" href="https://www.google.com/maps/place/Madrid+Cundinamarca" target="_blank">📍 Ver en Google Maps</a>
+    </div>
+  </div>
+
+  <!-- Facatativá -->
+  <div id="modalMapaFacatativa" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal('modalMapaFacatativa')">&times;</span>
+      <h2 style="color:var(--verde2)">📍 Facatativá</h2>
+      <p><strong>Ubicación:</strong> Sabana Occidente de Bogotá</p>
+      <img src="img/facatativa.png" alt="Facatativá" style="max-width:100%;height:auto;border-radius:8px;margin-top:10px;margin-bottom:10px">
+      
+      <h3 style="color:var(--verde2);margin-top:15px">Descripción:</h3>
+      <p>Se encuentra a 43,6 km de Bogotá por el occidente (Calle 13) y fue llamado por los muiscas “cercado fuerte al final de la llanura”. Facatativá se reconoce por sus atractivos turísticos entre los cuales están los hallazgos arqueológicos que datan de 10.000 años de antigüedad y expresiones de arte rupestre (pictogramas) consignadas hace miles de años en su emblemático Parque Arqueológico “Piedras del Tunjo”, Patrimonio Cultural Nacional. Entre sus platos típicos está el ajiaco, el peto tradicional con mantecada, el masato cundinamarqués, el cocido de cerdo, la picada de gallina, la cuajada con melado y el dulce de mora.</p>
+      
+      <a class="btn-map" href="https://www.google.com/maps/place/Facatativ%C3%A1" target="_blank">📍 Ver en Google Maps</a>
+    </div>
+  </div>
+
+  <!-- El Rosal -->
+  <div id="modalMapaElRosal" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal('modalMapaElRosal')">&times;</span>
+      <h2 style="color:var(--verde2)">📍 El Rosal</h2>
+      <p><strong>Ubicación:</strong> Sabana Occidente de Bogotá</p>
+      <img src="img/elrosal.png" alt="El Rosal" style="max-width:100%;height:auto;border-radius:8px;margin-top:10px;margin-bottom:10px">
+      
+      <h3 style="color:var(--verde2);margin-top:15px">Descripción:</h3>
+      <p>Se encuentra a 20 kilómetros de Bogotá y se caracteriza por su fácil acceso (Calle 80 - Autopista Medellín). Es el municipio más joven de Cundinamarca, fundado en 1903, llamado Jardín de la Sabana por su alta producción y exportación de flores. Su clima es ideal y ha hecho que sea una de las tierras más ricas y productivas en el área agroindustrial. Los cultivos de papa, arveja, maíz y zanahoria son algunos de los productos de mejor calidad que se producen en estas tierras. La industria pecuaria se da con ejemplares de ganado bovino, que satisfacen la demanda de leche y carne del municipio. Entre sus platos típicos está la fritanga.</p>
+      
+      <a class="btn-map" href="https://www.google.com/maps/place/El+Rosal" target="_blank">📍 Ver en Google Maps</a>
+    </div>
+  </div>
+
+  <!-- Bojacá -->
+  <div id="modalMapaBojaca" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal('modalMapaBojaca')">&times;</span>
+      <h2 style="color:var(--verde2)">📍 Bojacá</h2>
+      <p><strong>Ubicación:</strong> Sabana Occidente de Bogotá</p>
+      <img src="img/bojaca.png" alt="Bojacá" style="max-width:100%;height:auto;border-radius:8px;margin-top:10px;margin-bottom:10px">
+      
+      <h3 style="color:var(--verde2);margin-top:15px">Descripción:</h3>
+      <p>Se encuentra a 40 kilómetros de Bogotá. Bojacá es la cuna del turismo religioso de Cundinamarca. Allí se encuentra el Santuario de Nuestra Señora de la Salud, un emblema para la comunidad católica nacional e internacional. También se le conoce como la Roma chiquita por su ambiente religioso y el comercio alrededor de las manifestaciones católicas. Es un espacio de descanso y entretenimiento. Entre su comida local está la gallina criolla, sopas de mondongo, arroz y pasta, la fritanga y la carne llanera. Antes de irte no dejes de probar los alfandoques y sus dulces artesanales.</p>
+      
+      <a class="btn-map" href="https://www.google.com/maps/place/Bojac%C3%A1" target="_blank">📍 Ver en Google Maps</a>
+    </div>
+  </div>
+
+  <!-- Zipacón -->
+  <div id="modalMapaZipacon" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal('modalMapaZipacon')">&times;</span>
+      <h2 style="color:var(--verde2)">📍 Zipacón</h2>
+      <p><strong>Ubicación:</strong> Sabana Occidente de Bogotá</p>
+      <img src="img/zipacon.png" alt="Zipacón" style="max-width:100%;height:auto;border-radius:8px;margin-top:10px;margin-bottom:10px">
+      
+      <h3 style="color:var(--verde2);margin-top:15px">Descripción:</h3>
+      <p>Zipacón o “Llanto o lamento del Zipa”, se encuentra a 50 kilómetros de Bogotá. Este territorio ancestral que la tribu Muisca defendió de la invasión española, aún pareciera estar detenido en el tiempo, sus calles empedradas enriquecen un hermoso paisaje colonial, cuenta con una valiosa oferta de turismo cultural y natural, como la capilla doctrinera, la casa alta, la ermita del arte y el Museo del Disco, primero a nivel nacional y el quinto mundialmente. Gallina criolla Queso campesino Pan de maíz Postres con bocadillo Postres con uchuva Masato.</p>
+      
+      <a class="btn-map" href="https://www.google.com/maps/place/Zipac%C3%B3n" target="_blank">📍 Ver en Google Maps</a>
+    </div>
+  </div>
+
+  <!-- Subachoque -->
+  <div id="modalMapaSubachoque" class="modal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal('modalMapaSubachoque')">&times;</span>
+      <h2 style="color:var(--verde2)">📍 Subachoque</h2>
+      <p><strong>Ubicación:</strong> Sabana Occidente de Bogotá</p>
+      <img src="img/subachoque.png" alt="Subachoque" style="max-width:100%;height:auto;border-radius:8px;margin-top:10px;margin-bottom:10px">
+      
+      <h3 style="color:var(--verde2);margin-top:15px">Descripción:</h3>
+      <p>Se encuentra a 44 kilómetros de Bogotá. En lengua chibcha signif ica “trabajo de f rente”. Poseedor de una imponente belleza ambiental con diversidad de fauna y flora. Es un municipio agrícola y ganadero y sus atardeceres se caracterizan por sus amplia gama de colores que se divisan en el cielo. Se puede disfrutar de Mazamorra chiquita, Ajiaco, Sopa de cubios, Mazamorra dulce, Tamales,Masato.</p>
+      
+      <a class="btn-map" href="https://www.google.com/maps/place/Subachoque" target="_blank">📍 Ver en Google Maps</a>
+    </div>
+  </div>
   <!-- ---------------- Modales enriquecidos Sabana Norte ---------------- -->
 
   <!-- Zipaquirá (ya enriquecido) -->
@@ -548,17 +934,20 @@
       <p>Gachancipá conserva tradiciones rurales y ofrece rutas de agroturismo y patrimonio cultural.</p>
 
       <div class="site">
-        <h3>🪨 Arte Rupestre y petroglifos</h3>
-        <img src="https://www.sitiosturisticoscolombia.com/wp-content/uploads/2020/02/Arte-Rupestre-Gachancipa.jpg" alt="Arte Rupestre en Gachancipá">
-        <p>Zonas arqueológicas con grabados rupestres que muestran la historia prehispánica de la región.</p>
-        <a class="btn-map" href="https://www.google.com/maps/search/arte+rupestre+Gachancipa" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
-      </div>
-
-      <div class="site">
-        <h3>⛪ Iglesia San Bartolomé Apóstol</h3>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Iglesia_de_San_Bartolome_Apostol_Gachancipa.jpg/320px-Iglesia_de_San_Bartolome_Apostol_Gachancipa.jpg" alt="Iglesia San Bartolomé">
-        <p>Templo colonial que refleja la historia religiosa y arquitectónica del municipio.</p>
-        <a class="btn-map" href="https://www.google.com/maps/place/Gachancip%C3%A1" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
+        <h3>🪨 Museo Campesino</h3>
+        <!-- CARRUSEL -->
+        <div class="carousel" aria-roledescription="carouselTocan">
+          <div class="carousel-images">
+            <img src="img/gacha1.png" alt="Museo Campesino - imagen 1">
+            <img src="img/gacha2.png" alt="Museo Campesino - imagen 2">
+            <img src="img/gacha3.png" alt="Museo Campesino - imagen 3">
+          </div>
+          <button class="prev" aria-label="Anterior">&#10094;</button>
+          <button class="next" aria-label="Siguiente">&#10095;</button>
+        </div>
+        <!-- FIN CARRUSEL -->
+        <p>El Museo Campesino es un lugar de encuentro con la Cultura Campesina del Departamento de Cundinamarca, enmarcado en la preservación, divulgación y promoción del Patrimonio Material e Inmaterial local mediante actividades culturales y turísticas</p>
+        <a class="btn-map" href="https://maps.app.goo.gl/4PRFz5aXrC6r3dNn6" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
       </div>
     </div>
   </div>
@@ -571,16 +960,20 @@
       <p>Sopó ofrece parques temáticos, santuarios y miradores con amplias actividades recreativas.</p>
 
       <div class="site">
-        <h3>🏞 Parque Jaime Duque</h3>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/d/d2/Mapa_del_Parque_Jaime_Duque.jpg" alt="Parque Jaime Duque">
-        <p>Parque temático con atracciones educativas, zoológico y espacios para eventos familiares.</p>
-        <a class="btn-map" href="https://www.google.com/maps/place/Parque+Jaime+Duque" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
-      </div>
-
-      <div class="site">
-        <h3>⛪ Santuario y miradores</h3>
-        <p>Santuarios y puntos panorámicos donde se realizan peregrinaciones y se disfrutan vistas de la sabana.</p>
-        <a class="btn-map" href="https://www.google.com/maps/search/miradores+Sop%C3%B3" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
+        <h3>Parque Puente Sopó</h3>
+        <!-- CARRUSEL -->
+        <div class="carousel" aria-roledescription="carouselTocan">
+          <div class="carousel-images">
+            <img src="img/sop1.png" alt="Parque Puente Sopó - imagen 1">
+            <img src="img/sop2.png" alt="Parque Puente Sopó - imagen 2">
+            <img src="img/sop3.png" alt="Parque Puente Sopó - imagen 3">
+          </div>
+          <button class="prev" aria-label="Anterior">&#10094;</button>
+          <button class="next" aria-label="Siguiente">&#10095;</button>
+        </div>
+        <!-- FIN CARRUSEL -->
+        <p>Parque temático con atracciones acuáticas, areas de picnic y senderos ecológicos.</p>
+        <a class="btn-map" href="https://maps.app.goo.gl/73T921eLzrk2hwjZ7" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
       </div>
     </div>
   </div>
@@ -593,19 +986,22 @@
       <p>Guasca es puerta de entrada a ecosistemas de páramo y sitios sagrados muiscas.</p>
 
       <div class="site">
-        <h3>🏞 Lagunas de Siecha (Chingaza)</h3>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/29/Laguna_Siecha.jpg/320px-Laguna_Siecha.jpg" alt="Laguna Siecha">
-        <p>Conjunto de lagunas sagradas para los muiscas dentro del Parque Nacional Chingaza. Visitas con guía.</p>
-        <a class="btn-map" href="https://www.google.com/maps/place/Lagunas+de+Siecha" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
+        <h3>🏞 Lagunas de Siecha</h3>
+        <!-- CARRUSEL -->
+        <div class="carousel" aria-roledescription="carouselTocan">
+          <div class="carousel-images">
+            <img src="img/guas1.png" alt="Lagunas de Siecha - imagen 1">
+            <img src="img/guas2.png" alt="Lagunas de Siecha - imagen 2">
+            <img src="img/guas3.png" alt="Lagunas de Siecha - imagen 3">
+          </div>
+          <button class="prev" aria-label="Anterior">&#10094;</button>
+          <button class="next" aria-label="Siguiente">&#10095;</button>
+        </div>
+        <!-- FIN CARRUSEL -->
+        <p>Conjunto de lagunas sagradas para los muiscas; ideales para senderismo y conexión con la naturaleza.</p>
+        <a class="btn-map" href="https://maps.app.goo.gl/t5Vwqk6d3qoyzTzA6" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
       </div>
-
-      <div class="site">
-        <h3>💧 Cascadas y senderos</h3>
-        <img src="https://www.ecoglobalexpeditions.com/wp-content/uploads/2021/02/Cascadas-de-Guasca-Colombia.jpg" alt="Cascada de Guasca">
-        <p>Senderos ecológicos que conducen a cascadas y quebradas, excelentes para el ecoturismo y fotografía.</p>
-        <a class="btn-map" href="https://www.google.com/maps/search/cascada+Guasca" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
-      </div>
-    </div>
+    </div>    
   </div>
 
   <!-- La Calera (enriquecido) -->
@@ -641,19 +1037,22 @@
       <p>Cajicá es un centro cultural con tradición artesanal y festividades locales.</p>
 
       <div class="site">
-        <h3>🏛 Parque Principal y arquitectura</h3>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a8/Parque_de_Cajic%C3%A1.jpg/320px-Parque_de_Cajic%C3%A1.jpg" alt="Parque Principal de Cajicá">
-        <p>Espacio cultural y social rodeado de cafés, artesanías y arquitectura tradicional.</p>
-        <a class="btn-map" href="https://www.google.com/maps/place/Parque+Principal+Cajica" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
+        <h3>🏛 Estación Tren de la Sabana</h3>
+        <!-- CARRUSEL -->
+        <div class="carousel" aria-roledescription="carouselLaCalera">
+          <div class="carousel-images">
+            <img src="img/caj1.png" alt="Estación Tren - imagen 1">
+            <img src="img/caj2.png" alt="Estación Tren - imagen 2">
+            <img src="img/caj3.png" alt="Estación Tren - imagen 3">
+          </div>
+          <button class="prev" aria-label="Anterior">&#10094;</button>
+          <button class="next" aria-label="Siguiente">&#10095;</button>
+        </div>
+        <!-- FIN CARRUSEL -->
+       <p>Estación histórica del Tren de La Sabana, con museo y recorridos turísticos en tren.</p>
+       <a class="btn-map" href="https://maps.app.goo.gl/5iAGhUpiS9FEzp968" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
       </div>
-
-      <div class="site">
-        <h3>⛪ Capilla de las Mercedes</h3>
-        <img src="https://www.cajica.gov.co/wp-content/uploads/2020/11/Capilla-de-las-Mercedes.jpg" alt="Capilla de las Mercedes">
-        <p>Iglesia de valor histórico y religioso, parte del patrimonio local.</p>
-        <a class="btn-map" href="https://www.google.com/maps/place/Capilla+de+las+Mercedes+Cajica" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
-      </div>
-    </div>
+    </div>  
   </div>
 
   <!-- Tabio (enriquecido) -->
@@ -664,22 +1063,20 @@
       <p>Tabio es reconocido por sus aguas termales y su ambiente rural y cultural.</p>
 
       <div class="site">
-        <h3>♨ Aguas Termales de Tabio</h3>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/Termales_de_Tabio.jpg" alt="Termales de Tabio">
-        <p>Balnearios y centros termales con propiedades relajantes y terapéuticas; turismo de bienestar.</p>
-        <a class="btn-map" href="https://www.google.com/maps/search/Termales+de+Tabio" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
-      </div>
-
-      <div class="site">
-        <h3>🌳 Parque Principal y arquitectura</h3>
-        <p>Centro del municipio con comercio local, restaurantes y vida comunitaria.</p>
-        <a class="btn-map" href="https://www.google.com/maps/place/Parque+Principal+Tabio" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
-      </div>
-
-      <div class="site">
-        <h3>⛪ Capilla de Santa Bárbara</h3>
-        <p>Capilla ubicada en un cerro con valor histórico y vistas del entorno.</p>
-        <a class="btn-map" href="https://www.google.com/maps/search/Capilla+Santa+Barbara+Tabio" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
+        <h3>🌳 Jardín Botánico Tabio</h3>
+        <!-- CARRUSEL -->
+        <div class="carousel" aria-roledescription="carouselLaCalera">
+          <div class="carousel-images">
+            <img src="img/caj1.png" alt="Jardín Botánico - imagen 1">
+            <img src="img/caj2.png" alt="Jardín Botánico - imagen 2">
+            <img src="img/caj3.png" alt="Jardín Botánico - imagen 3">
+          </div>
+          <button class="prev" aria-label="Anterior">&#10094;</button>
+          <button class="next" aria-label="Siguiente">&#10095;</button>
+        </div>
+        <!-- FIN CARRUSEL -->
+        <p>Jardín botánico con flora nativa, senderos ecológicos y áreas de picnic.</p>
+        <a class="btn-map" href="https://maps.app.goo.gl/pDLcfjM6NpcQRpb69" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
       </div>
     </div>
   </div>
@@ -692,20 +1089,24 @@
       <p>Tenjo ofrece paisajes rurales, montañas y sitios de interés cultural.</p>
 
       <div class="site">
-        <h3>⛰ Cerro de Juaica</h3>
-        <img src="https://www.radionacional.co/sites/default/files/styles/1050x525/public/2022-02/CerroJuaicaTenjo.jpg" alt="Cerro Juaica">
-        <p>Cerro con valor cultural para la comunidad y rutas de senderismo con excelentes vistas.</p>
-        <a class="btn-map" href="https://www.google.com/maps/search/Cerro+Juaica+Tenjo" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
-      </div>
-
-      <div class="site">
-        <h3>⛪ Iglesia de San Lorenzo</h3>
-        <p>Iglesia colonial ubicada en el parque central, pieza importante del patrimonio local.</p>
-        <a class="btn-map" href="https://www.google.com/maps/place/Iglesia+San+Lorenzo+Tenjo" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
+        <h3>🚜 Granja Faunáticos</h3>
+        <!-- CARRUSEL -->
+        <div class="carousel" aria-roledescription="carouselLaCalera">
+          <div class="carousel-images">
+            <img src="img/ten1.png" alt="Granja Faunáticos - imagen 1">
+            <img src="img/ten2.png" alt="Granja Faunáticos - imagen 2">
+            <img src="img/ten3.png" alt="Granja Faunáticos - imagen 3">
+          </div>
+          <button class="prev" aria-label="Anterior">&#10094;</button>
+          <button class="next" aria-label="Siguiente">&#10095;</button>
+        </div>
+        <!-- FIN CARRUSEL -->
+        <p>Granja educativa con animales de granja, actividades interactivas y áreas de picnic.</p>
+        <a class="btn-map" href="https://maps.app.goo.gl/XxapSV1B1zBz8Pak8" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
       </div>
     </div>
   </div>
-
+        
   <!-- Chía (enriquecido) -->
   <div id="modalChia" class="modal">
     <div class="modal-content" role="dialog" aria-labelledby="chiaTitle">
@@ -740,27 +1141,26 @@
       <p>Cota ofrece espacios rurales y miradores muy cercanos a Bogotá; ideal para turismo de campo.</p>
 
       <div class="site">
-        <h3>🌄 Parque Principal de Cota</h3>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/4/45/Cota_cundinamarca.jpg" alt="Parque Principal de Cota">
-        <p>Centro de encuentro comunitario y punto de partida para recorridos rurales.</p>
-        <a class="btn-map" href="https://www.google.com/maps/place/Parque+Principal+Cota" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
-      </div>
-
-      <div class="site">
-        <h3>⛰ Cerro Majuy</h3>
-        <p>Lugar con valor cultural y rutas de caminata con vistas panorámicas.</p>
-        <a class="btn-map" href="https://www.google.com/maps/search/Cerro+Majuy+Cota" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
-      </div>
-
-      <div class="site">
-        <h3>🎪 Feria Artesanal y Gastronómica</h3>
-        <p>Eventos locales periódicos que resaltan la artesanía y la gastronomía regional.</p>
-        <a class="btn-map" href="https://www.google.com/maps/search/feria+artesanal+Cota" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
+        <h3>🌄 Bioparque La Reserva</h3>
+        <!-- CARRUSEL -->
+        <div class="carousel" aria-roledescription="carouselChia">
+          <div class="carousel-images">
+            <img src="img/cot1.png" alt="Bioparque - imagen 1">
+            <img src="img/cot2.png" alt="Bioparque - imagen 2">
+            <img src="img/cot3.png" alt="Bioparque - imagen 3">
+          </div>
+          <button class="prev" aria-label="Anterior">&#10094;</button>
+          <button class="next" aria-label="Siguiente">&#10095;</button>
+        </div>
+        <!-- FIN CARRUSEL -->
+        <p>Sumérgete por los diferentes ecosistemas colombianos en un recorrido guiado donde podrás compartir con diferentes especies silvestres rescatados del tráfico ilegal.</p>
+        <a class="btn-map" href="https://www.google.com/maps/place/Cerro+La+Balvanera" target="_blank" rel="noreferrer">📍 Ver en Google Maps</a>
       </div>
     </div>
   </div>
+        
 
-    <!-- ================= SABANA OCCIDENTAL - MODALES ================= -->
+  <!-- ================= SABANA OCCIDENTAL - MODALES ================= -->
 
  <!-- Modal Facatativa -->
  <div id="modalFacatativa" class="modal">
@@ -812,6 +1212,31 @@
     </div>
   </div>
 
+  <!-- Modal Madrid -->
+  <div id="modalMadrid" class="modal">
+    <div class="modal-content" role="dialog" aria-labelledby="madridTitle">
+     <span class="modal-close" onclick="closeModal('modalMadrid')">&times;</span>
+     <h2 id="mosqueraTitle">Madrid</h2>
+    
+      <div class="site">
+       <h3>⛰️ Cerro de Casa Blanca</h3>
+       <!-- CARRUSEL -->
+       <div class="carousel" aria-roledescription="carouselMosquera">
+         <div class="carousel-images">
+           <img src="img/madrid1.png" alt="Cerro Casa Blanca - imagen 1">
+           <img src="img/madrid2.png" alt="Cerro Casa Blanca - imagen 2">
+           <img src="img/madrid3.png" alt="Cerro Casa Blanca - imagen 3">
+         </div>
+         <button class="prev" aria-label="Anterior">&#10094;</button>
+         <button class="next" aria-label="Siguiente">&#10095;</button>
+       </div>
+       <!-- FIN CARRUSEL -->
+       <p>El Cerro de Casa Blanca (también conocido como Cerro Tibaitatá) es un punto de referencia natural y un destino popular para el senderismo en el municipio de Madrid, Cundinamarca.</p>
+       <a href="https://maps.app.goo.gl/1E9F6bkmfrAYV5qu6" target="_blank" class="map-btn">📍 Ver en Google Maps</a>
+      </div>
+    </div>
+  </div>
+
  <!-- Modal Funza -->
  <div id="modalFunza" class="modal">
   <div class="modal-content">
@@ -819,17 +1244,20 @@
     <h2 class="modal-title">Funza</h2>
 
     <div class="site">
-      <h3>🏛 Parque Principal Capitán Ernesto Esguerra</h3>
-      <img src="https://www.funza-cundinamarca.gov.co/sites/municipio/content/files/000730/36474_parque-principal.jpg" alt="Parque Principal Funza">
-      <p>Centro histórico del municipio, rodeado de edificios coloniales y la iglesia principal.</p>
-      <a href="https://maps.app.goo.gl/oyR8TSwGGJm4FHQG7" target="_blank" class="map-btn">📍 Ver en Google Maps</a>
-    </div>
-
-    <div class="site">
-      <h3>🌱 Humedal La Herrera</h3>
-      <img src="https://bogota.gov.co/sites/default/files/styles/1050px/public/2022-02/humedal-la-herrera-cundinamarca.jpg" alt="Humedal La Herrera">
-      <p>Humedal de gran importancia ecológica, perfecto para observación de aves y caminatas.</p>
-      <a href="https://maps.app.goo.gl/Ynpi3bC6X7Tx2DE78" target="_blank" class="map-btn">📍 Ver en Google Maps</a>
+      <h3>🏞️ Parque Humedal Guali</h3>
+      <!-- CARRUSEL -->
+      <div class="carousel" aria-roledescription="carouselMosquera">
+        <div class="carousel-images">
+          <img src="img/fun1.png" alt="Parque Humedal - imagen 1">
+          <img src="img/fun2.png" alt="Parque Humedal - imagen 2">
+          <img src="img/fun3.png" alt="Parque Humedal - imagen 3">
+        </div>
+        <button class="prev" aria-label="Anterior">&#10094;</button>
+        <button class="next" aria-label="Siguiente">&#10095;</button>
+      </div>
+      <!-- FIN CARRUSEL -->
+      <p>Humedal protegido con senderos ecológicos y avistamiento de aves.</p>
+      <a href="https://maps.app.goo.gl/eDS7Zt4VKSdq2LnNA" target="_blank" class="map-btn">📍 Ver en Google Maps</a>
     </div>
   </div>
  </div>
@@ -857,7 +1285,7 @@
      <a href="https://maps.app.goo.gl/5vmAUqDPDsk48xR79" target="_blank" class="map-btn">📍 Ver en Google Maps</a>
     </div>
   </div>
-</div>
+ </div>
 
 
  <!-- Modal El Rosal -->
@@ -867,20 +1295,24 @@
     <h2 class="modal-title">El Rosal</h2>
 
     <div class="site">
-      <h3>🏞 Parque Principal</h3>
-      <img src="https://www.cundinamarca.gov.co/sites/cundinamarca/content/files/000785/39236_el-rosal.jpg" alt="Parque Principal El Rosal">
-      <p>Lugar de encuentro con arquitectura típica y rodeado de montañas.</p>
-      <a href="https://maps.app.goo.gl/f2X1bA9UToUr3R1A6" target="_blank" class="map-btn">📍 Ver en Google Maps</a>
+      <h3>🏛️ Monasterio Benedictino El Rosal</h3>
+      <!-- CARRUSEL -->
+     <div class="carousel" aria-roledescription="carouselSubachoque">
+      <div class="carousel-images">
+        <img src="img/rosal1.png" alt="Monasterio Benedictino - imagen 1">
+        <img src="img/rosal2.png" alt="Monasterio Benedictino - imagen 2">
+        <img src="img/rosal3.png" alt="Monasterio Benedictino - imagen 3">
+      </div>
+      <button class="prev" aria-label="Anterior">&#10094;</button>
+      <button class="next" aria-label="Siguiente">&#10095;</button>
     </div>
-
-    <div class="site">
-      <h3>🌺 Miradores Campestres</h3>
-      <img src="https://dynamic-media-cdn.tripadvisor.com/media/photo-o/13/ed/88/09/campo-de-rosas.jpg" alt="Miradores en El Rosal">
-      <p>El Rosal es conocido por sus campos de flores y miradores naturales ideales para el turismo rural.</p>
-      <a href="https://maps.app.goo.gl/4EwG8yH5cCwPweU88" target="_blank" class="map-btn">📍 Ver en Google Maps</a>
-    </div>
+    <!-- FIN CARRUSEL -->
+    <p>Monasterio histórico con arquitectura colonial, jardines y espacios de meditación.</p>
+    <a href="https://maps.app.goo.gl/DggAosxb2MYBfkY2A" target="_blank" class="map-btn">📍 Ver en Google Maps</a>
+   </div>
   </div>
  </div>
+      
 
  <!-- Modal Bojacá -->
  <div id="modalBojaca" class="modal">
@@ -901,6 +1333,7 @@
        <button class="next" aria-label="Siguiente">&#10095;</button>
      </div>
      <!-- FIN CARRUSEL -->
+     <p>Las Piedras del Chivo Negro es un parque arqueológico y natural en Bojacá, Cundinamarca, a una hora de Bogotá. El lugar es valorado por su riqueza histórica, cultural y natural.</p>
      <a href="https://maps.app.goo.gl/Ei6XXsz1uDqLFHwZ6" target="_blank" class="map-btn">📍 Ver en Google Maps</a>
     </div>
   </div>
@@ -913,24 +1346,25 @@
     <h2 class="modal-title">Zipacón</h2>
 
     <div class="site">
-      <h3>⛰ Cerro de Zipacón</h3>
-      <img src="https://live.staticflickr.com/65535/49608387422_60a1a3fef5_b.jpg" alt="Cerro de Zipacón">
-      <p>Lugar histórico donde se libraron batallas indígenas y con paisajes espectaculares.</p>
-      <a href="https://maps.app.goo.gl/MbkDKYrrdLHgkYFJ9" target="_blank" class="map-btn">📍 Ver en Google Maps</a>
-    </div>
-
-    <div class="site">
-      <h3>🏘 Parque Principal</h3>
-      <img src="https://www.cundinamarca.gov.co/sites/cundinamarca/content/files/000786/39252_zipacon.jpg" alt="Parque Principal Zipacón">
-      <p>Espacio colonial y cultural, rodeado de construcciones típicas y tranquilidad rural.</p>
-      <a href="https://maps.app.goo.gl/u7U1FQ7iyvKkUKgB6" target="_blank" class="map-btn">📍 Ver en Google Maps</a>
+      <h3>🚇 Túnel Ferrocarril</h3>
+      <!-- CARRUSEL -->
+      <div class="carousel" aria-roledescription="carouselBojaca">
+       <div class="carousel-images">
+        <img src="img/zipacon1.png" alt="Túnel Ferrocarril - imagen 1">
+        <img src="img/zipacon2.png" alt="Túnel Ferrocarril - imagen 2">
+        <img src="img/zipacon3.png" alt="Túnel Ferrocarril - imagen 3">
+       </div>
+       <button class="prev" aria-label="Anterior">&#10094;</button>
+       <button class="next" aria-label="Siguiente">&#10095;</button>
+      </div>
+     <!-- FIN CARRUSEL -->
+     <p>El Túnel del Ferrocarril en Zipacón, también conocido como el Túnel del Centenario, es un atractivo turístico centenario construido en 1908 como parte del Ferrocarril del Girardot.
+     <a href="https://maps.app.goo.gl/mK56A7gJccTFakz7A" target="_blank" class="map-btn">📍 Ver en Google Maps</a>
     </div>
   </div>
- </div>
+</div>
 
  <!-- ==================== FIN MODALES SABANA OCCIDENTAL ==================== -->
-
-
   <script>
     /* Navegación por secciones */
     function scrollToSection(id){
@@ -1058,6 +1492,12 @@
    window.addEventListener('resize', resizeMap);
    resizeMap(); // Ejecutar inmediatamente
    });
+
+   /* Abrir modal de mapa - INDEPENDIENTE */
+   function openMapModal(municipio){
+   const modalId = 'modalMapa' + municipio;
+   openModal(modalId);
+   } 
   </script> 
 </body>
 </html>
